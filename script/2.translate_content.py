@@ -1,3 +1,4 @@
+# --- START OF FILE script/translate_content.py ---
 import sys
 import os
 import frontmatter
@@ -61,10 +62,10 @@ def translate_and_save(filename, lang):
     target_filename = filename.replace(".md", f"_{lang}.md")
     target_path = os.path.join(CONTENT_DIR, target_filename)
 
-    # 기존 번역 파일이 있어도 덮어쓰기 위해 주석 처리
-    # if os.path.exists(target_path):
-    #     print(f"   ⏭️ Skipped {target_filename} (Already exists).")
-    #     return
+    # [수정됨] 이미 번역된 파일이 존재하면 스킵합니다.
+    if os.path.exists(target_path):
+        print(f"   ⏭️ Skipped {target_filename} (Already exists).")
+        return
 
     try:
         with open(source_path, "r", encoding="utf-8") as f:
@@ -72,14 +73,6 @@ def translate_and_save(filename, lang):
         
         # 프롬프트 생성 및 AI 호출
         prompt = get_translation_prompt(post, lang)
-        
-        # 안전 설정 완화 (필요시)
-        # safety_settings = [
-        #     {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-        #     {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-        #     {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-        #     {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
-        # ]
         
         response = MODEL.generate_content(prompt)
         translated_content = response.text.strip()
@@ -89,7 +82,6 @@ def translate_and_save(filename, lang):
             frontmatter.loads(translated_content)
         except Exception:
             print(f"   ⚠️ Warning: Translation result might have broken frontmatter for {target_filename}. Retrying...")
-            # 재시도 로직을 추가하거나, 일단 저장하고 수동 확인
         
         with open(target_path, "w", encoding="utf-8") as f:
             f.write(translated_content)

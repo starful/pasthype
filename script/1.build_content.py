@@ -40,9 +40,18 @@ def generate_kicks_content():
     df = pd.read_csv(CSV_PATH)
     os.makedirs(CONTENT_DIR, exist_ok=True)
     
-    print(f"🚀 총 {len(df)}명의 인물에 대한 심층 분석을 시작합니다 (English Mode)...")
+    print(f"🚀 총 {len(df)}명의 인물에 대한 심층 분석을 시작합니다 (English Mode, Max 4 new items)...")
+
+    # [수정된 부분] 4개 제한 로직 추가
+    new_generated_count = 0
+    max_to_generate = 4
 
     for _, row in df.iterrows():
+        # 최대 생성 개수에 도달하면 루프 종료
+        if new_generated_count >= max_to_generate:
+            print(f"\n🛑 Limit reached: Created {max_to_generate} new articles for this run.")
+            break
+
         name_raw = row['name']
         file_slug = slugify(name_raw)
         file_path = os.path.join(CONTENT_DIR, f"{file_slug}.md")
@@ -52,7 +61,7 @@ def generate_kicks_content():
             print(f"   ⏭️  Skipped: {file_slug}.md (Already exists)")
             continue
 
-        print(f"   👟 Generating deep dive for: {name_raw} ...")
+        print(f"\n   👟 Generating deep dive for: {name_raw} (New item {new_generated_count + 1}/{max_to_generate}) ...")
         
         # --- AI 프롬프트 (수정됨: 영어 전용 및 길이 조정) ---
         prompt = f"""
@@ -153,6 +162,9 @@ def generate_kicks_content():
                 f.write(final_content)
             
             print(f"   ✅ Created: {file_slug}.md (Length: {len(final_content)} chars)")
+            
+            # [수정된 부분] 새로 생성했을 때만 카운트 증가
+            new_generated_count += 1
             time.sleep(5) 
             
         except Exception as e:

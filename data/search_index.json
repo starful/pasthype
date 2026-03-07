@@ -18,6 +18,33 @@
     "image": "/static/img/physics.jpeg"
   },
   {
+    "lang": "en",
+    "slug": "toga",
+    "file": "toga.md",
+    "name": "Toga",
+    "sneaker": "Air Jordan 1 Retro High OG 'Bred' (Banned)",
+    "era": " Laurel wreath",
+    "image": "/static/img/toga.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "toga",
+    "file": "toga_ja.md",
+    "name": "トガ",
+    "sneaker": "エア ジョーダン 1 レトロ ハイ OG 'Bred' (Banned)",
+    "era": " Laurel wreath",
+    "image": "/static/img/toga.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "armor",
+    "file": "armor_ko.md",
+    "name": "크롬의 성녀: 잔 다르크가 진정한 폼포짓 매니아인 이유",
+    "sneaker": "에어 폼포짓 원 '메탈릭 실버'",
+    "era": "Banner",
+    "image": "/static/img/armor.jpeg"
+  },
+  {
     "lang": "ko",
     "slug": "hangul",
     "file": "hangul_ko.md",
@@ -46,12 +73,57 @@
   },
   {
     "lang": "ja",
+    "slug": "armor",
+    "file": "armor_ja.md",
+    "name": "クロムの乙女：ジャンヌ・ダルクが究極のフォームポジット・ヘッズである理由",
+    "sneaker": "エア フォームポジット ワン 'メタリックシルバー'",
+    "era": "Banner",
+    "image": "/static/img/armor.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "beard",
+    "file": "beard.md",
+    "name": "Beard",
+    "sneaker": "ISPA Road Warrior 'Volt'",
+    "era": " Notebooks",
+    "image": "/static/img/beard.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "toga",
+    "file": "toga_ko.md",
+    "name": "토가",
+    "sneaker": "에어 조던 1 레트로 하이 OG '브레드' (밴드)",
+    "era": " Laurel wreath",
+    "image": "/static/img/toga.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "beard",
+    "file": "beard_ja.md",
+    "name": "髭（Beard）",
+    "sneaker": "Nike ISPA ロード ウォリアー 'Volt'",
+    "era": " Notebooks",
+    "image": "/static/img/beard.jpeg"
+  },
+  {
+    "lang": "ja",
     "slug": "red-face",
     "file": "red-face_ja.md",
     "name": "「Lost & Found」を纏った武神：関羽の永遠のフレックス",
     "sneaker": "エア ジョーダン 1 レトロ ハイ OG 'Chicago' (Lost & Found)",
     "era": "Late Eastern Han / Three Kingdoms",
     "image": "/static/img/red-face.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "armor",
+    "file": "armor.md",
+    "name": "The Maiden of Chrome: Why Joan of Arc is the Ultimate Foamposite Head",
+    "sneaker": "Air Foamposite One 'Metallic Silver'",
+    "era": "Banner",
+    "image": "/static/img/armor.jpeg"
   },
   {
     "lang": "ja",
@@ -73,6 +145,24 @@
   },
   {
     "lang": "ko",
+    "slug": "eyeliner",
+    "file": "eyeliner_ko.md",
+    "name": "아이라이너",
+    "sneaker": "나이키 x 스와로브스키 에어맥스 97 '메탈릭 골드'",
+    "era": "Asp",
+    "image": "/static/img/eyeliner.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "eyeliner",
+    "file": "eyeliner.md",
+    "name": "Unknown Title",
+    "sneaker": "Unknown Sneaker",
+    "era": "History",
+    "image": "/static/img/eyeliner.jpeg"
+  },
+  {
+    "lang": "ko",
     "slug": "red-face",
     "file": "red-face_ko.md",
     "name": "'로스트 앤 파운드'를 신은 무신: 관우의 영원한 플렉스",
@@ -90,6 +180,24 @@
     "image": "/static/img/luxury.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "beard",
+    "file": "beard_ko.md",
+    "name": "수염",
+    "sneaker": "ISPA 로드 워리어 '볼트'",
+    "era": " Notebooks",
+    "image": "/static/img/beard.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "eyeliner",
+    "file": "eyeliner_ja.md",
+    "name": "アイライナー",
+    "sneaker": "Nike x Swarovski エアマックス 97 'メタリックゴールド'",
+    "era": "Asp",
+    "image": "/static/img/eyeliner.jpeg"
+  },
+  {
     "lang": "ja",
     "slug": "luxury",
     "file": "luxury_ja.md",
@@ -102,8 +210,8 @@
     "lang": "ko",
     "slug": "physics",
     "file": "physics_ko.md",
-    "name": "움직이는 상대성 이론: 톰 삭스 x 나이키 마스 야드 2.0이 현대 물리학의 아버지에게 유일한 선택인 이유",
-    "sneaker": "톰 삭스 x 나이키 마스 야드 2.0",
+    "name": "움직이는 상대성 이론: 왜 톰 삭스 x 나이키 마즈 야드 2.0이 현대 물리학의 아버지에게 유일한 선택인가",
+    "sneaker": "톰 삭스 x 나이키 마즈 야드 2.0",
     "era": "Relativity",
     "image": "/static/img/physics.jpeg"
   }
