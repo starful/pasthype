@@ -1,3 +1,4 @@
+# --- START OF FILE script/build_content.py ---
 import sys
 import os
 import pandas as pd
@@ -110,36 +111,62 @@ def generate_kicks_content():
         """
         
         try:
-            # 긴 텍스트 생성을 위해 max_output_tokens 설정 추가 (모델에 따라 다를 수 있음)
+            # 긴 텍스트 생성을 위해 max_output_tokens 설정 추가
             generation_config = genai.types.GenerationConfig(
-                max_output_tokens=4096, # 충분히 긴 길이 확보
-                temperature=0.7 # 창의성 조절
+                max_output_tokens=4096, 
+                temperature=0.7 
             )
             
             response = MODEL.generate_content(
                 prompt,
                 generation_config=generation_config
             )
-            content = response.text.replace("```markdown", "").replace("```", "").strip()
+            raw_content = response.text.strip()
             
+            # ========================================================
+            # [수정된 핵심 로직] 데이터 정제 및 Frontmatter 파싱 강제화
+            # ========================================================
+            # 1. 불필요한 마크다운 감싸기 제거
+            if raw_content.startswith("```markdown"):
+                raw_content = raw_content[11:].strip()
+            elif raw_content.startswith("```"):
+                raw_content = raw_content[3:].strip()
+            
+            if raw_content.endswith("```"):
+                raw_content = raw_content[:-3].strip()
+
+            # 2. 정규식을 이용하여 --- 사이의 내용(YAML)과 그 아래 내용(Body)을 분리
+            match = re.search(r'^---\s*\n(.*?)\n---\s*\n(.*)', raw_content, re.DOTALL | re.MULTILINE)
+            
+            if match:
+                yaml_content = match.group(1).strip()
+                markdown_body = match.group(2).strip()
+                # 완벽한 형식으로 강제 재조립
+                final_content = f"---\n{yaml_content}\n---\n\n{markdown_body}"
+            else:
+                print(f"   ⚠️ Warning: Could not cleanly extract frontmatter for {name_raw}. Formatting might be broken.")
+                final_content = raw_content # 실패 시 원본 그대로 저장
+            # ========================================================
+
             # 파일 저장
             with open(file_path, "w", encoding="utf-8") as f:
-                f.write(content)
+                f.write(final_content)
             
-            print(f"   ✅ Created: {file_slug}.md (Length: {len(content)} chars)")
-            # API 속도 제한 및 긴 글 생성을 고려하여 대기 시간 증가
+            print(f"   ✅ Created: {file_slug}.md (Length: {len(final_content)} chars)")
             time.sleep(5) 
             
         except Exception as e:
             print(f"   ❌ Error generating content for {name_raw}: {e}")
-            # 에러 발생 시 잠시 대기 후 진행 (API 제한 걸렸을 경우 대비)
             time.sleep(10)
 
 def update_search_index():
-    """검색 및 리스트 출력을 위한 JSON 인덱스 생성"""
+    """
+    참고: 다국어 버전을 사용 중이시라면 이 함수 대신 
+    새로 만드신 `script/build_index.py`를 사용하시는 것을 권장합니다.
+    (이 함수는 단일 언어용 레거시 코드입니다.)
+    """
     index_data = []
     
-    # content 폴더가 없으면 생성 (에러 방지)
     if not os.path.exists(CONTENT_DIR):
         os.makedirs(CONTENT_DIR)
 
@@ -151,18 +178,15 @@ def update_search_index():
                     
                 index_data.append({
                     "file": filename.replace(".md", ""),
-                    # Frontmatter가 깨졌을 경우를 대비한 기본값 처리 강화
                     "name": post.metadata.get("title", filename.replace(".md", "").replace("-", " ").title()),
                     "sneaker": post.metadata.get("sneaker_model", "TBD"),
                     "brand": post.metadata.get("sneaker_brand", "Etc"),
                     "era": post.metadata.get("era", "History"),
-                    # 이미지 확장자는 추후 main.py에서 처리하므로 여기서는 대표적인 것 하나만 지정하거나 비워둠
                     "image_placeholder": f"/static/img/{filename.replace('.md', '.jpg')}" 
                 })
             except Exception as e:
                 print(f"⚠️ Error parsing {filename}: {e}")
     
-    # 인덱스 데이터가 있으면 저장
     if index_data:
         with open(INDEX_PATH, "w", encoding="utf-8") as f:
             json.dump(index_data, f, ensure_ascii=False, indent=2)
@@ -171,7 +195,6 @@ def update_search_index():
         print("⚠️ No markdown files found to index.")
 
 if __name__ == "__main__":
-    # 기존 한글 콘텐츠가 있다면 삭제하고 다시 시작하는 것을 권장합니다.
-    print("⚠️ [English Mode] Starting content generation. Ensure existing Korean content is removed if necessary.")
+    print("⚠️ [English Mode] Starting content generation.")
     generate_kicks_content()
-    update_search_index()
+    # update_search_index() # 다국어 처리를 위해 여기서는 실행하지 않습니다.
