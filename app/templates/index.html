@@ -3,21 +3,40 @@
 
 {% block content %}
 <div class="hero-section">
-    <!-- (생략) -->
+    <!-- 다국어 지원: 메인 타이틀 -->
+    <h1>HISTORY <span style="color:var(--point-color)">KICKS</span></h1>
+    
+    <!-- 다국어 지원: 서브 설명 -->
+    {% if current_lang == 'ko' %}
+        <p class="hero-subtitle">"만약 역사 속 위인들이 현대의 스트릿웨어와 하이프(Hype) 스니커즈를 만난다면?"</p>
+        <p class="hero-description">PASTHYPE는 잊혀진 과거의 유산과 현대의 스니커즈 문화를 결합한 가상의 패션 웹진입니다.<br>위인들의 발끝에서 새롭게 쓰여지는 역사적인 핏(Fit)을 확인하세요.</p>
+    
+    {% elif current_lang == 'ja' %}
+        <p class="hero-subtitle">「もし歴史上の偉人たちが、現代のストリートウェアやHypeなスニーカーに出会ったら？」</p>
+        <p class="hero-description">PASTHYPEは、忘れ去られた過去の遺産と現代のスニーカー文化を融合させた仮想のファッションウェブジンです。<br>偉人たちの足元で新たに刻まれる歴史的な「Fit（着こなし）」をご覧ください。</p>
+    
+    {% else %}
+        <!-- 기본값 (English) -->
+        <p class="hero-subtitle">"What if historical figures met modern streetwear and Hype sneakers?"</p>
+        <p class="hero-description">PASTHYPE is a virtual fashion webzine blending forgotten heritage with modern sneaker culture.<br>Discover historical fits rewritten from the ground up.</p>
+    {% endif %}
 </div>
 
+<!-- 갤러리 그리드 시작 -->
 <div class="gallery-grid">
     {% for item in kicks %}
-    <!-- [수정] 링크에 ?lang= 파라미터 추가 -->
-    <!-- item.slug는 build_content.py에서 새로 추가한 순수 슬러그 필드입니다 -->
-    <a href="/kicks/{{ item.slug }}?lang={{ current_lang }}" class="card">
-        <div class="card-img" style="background-image: url('{{ item.image }}');"></div>
-        <div class="card-info">
-            <h3>{{ item.name }}</h3>
-            <p class="sneaker-name">{{ item.sneaker }}</p>
-            <span class="era-badge">{{ item.era }}</span>
-        </div>
-    </a>
+    <div class="card">
+        <a href="/kicks/{{ item.slug }}?lang={{ current_lang }}" class="card-link">
+            <div class="card-img" style="background-image: url('{{ item.image }}');"></div>
+            <div class="card-info">
+                <h3>{{ item.name }}</h3>
+                <p class="sneaker-name">{{ item.sneaker }}</p>
+                <div class="era-badge-container">
+                    <span class="era-badge">{{ item.era }}</span>
+                </div>
+            </div>
+        </a>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}

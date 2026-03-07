@@ -102,20 +102,32 @@ a {
 ========================================= */
 .hero-section { 
     text-align: center; 
-    padding: 50px 20px 30px 20px; 
+    padding: 60px 20px 50px 20px; /* 아래쪽 여백 증가 */
+    max-width: 800px; /* 설명글이 너무 넓게 퍼지지 않도록 제한 */
+    margin: 0 auto; /* 중앙 정렬 */
 }
 
 .hero-section h1 { 
-    font-size: 2.8rem; 
+    font-size: 3rem; 
     line-height: 1; 
-    margin-bottom: 10px; 
+    margin-bottom: 20px; 
     text-transform: uppercase; 
     letter-spacing: 1px;
 }
 
-.hero-section p { 
+/* [추가/수정됨] 서브 타이틀 및 설명 디자인 */
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.hero-description { 
     color: var(--text-sub); 
-    font-size: 1.1rem; 
+    font-size: 1.05rem; 
+    line-height: 1.6;
 }
 
 .gallery-grid {
