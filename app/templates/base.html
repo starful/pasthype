@@ -4,16 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PastHype | Legacy Laced</title>
+    
+    <!-- [SEO] 동적 Title & Description -->
+    <title>{{ page_title if page_title else 'PastHype | Legacy Laced' }}</title>
+    <meta name="description" content="{{ page_description if page_description else 'Discover the ultimate crossover of historical icons and modern sneaker culture.' }}">
+    <meta name="keywords" content="Sneakers, History, Streetwear, Culture, PastHype, {{ meta.sneaker_model if meta else '' }}">
+
+    <!-- [SEO] Open Graph (Facebook, LinkedIn, Slack 등 공유용 미리보기) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ current_url }}">
+    <meta property="og:title" content="{{ page_title if page_title else 'PastHype | Legacy Laced' }}">
+    <meta property="og:description" content="{{ page_description if page_description else 'Where Heritage meets Hype.' }}">
+    <meta property="og:image" content="{{ og_image if og_image else 'https://pasthype.com/static/img/default_og.jpg' }}">
+
+    <!-- [SEO] Twitter Card (X/Twitter 공유용) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ current_url }}">
+    <meta name="twitter:title" content="{{ page_title if page_title else 'PastHype | Legacy Laced' }}">
+    <meta name="twitter:description" content="{{ page_description if page_description else 'Where Heritage meets Hype.' }}">
+    <meta name="twitter:image" content="{{ og_image if og_image else 'https://pasthype.com/static/img/default_og.jpg' }}">
+
+    <!-- [SEO] 다국어 지원 (hreflang) - 검색 엔진에 언어 버전 알림 -->
+    {% if slug %}
+    <link rel="alternate" hreflang="en" href="{{ request.base_url }}kicks/{{ slug }}?lang=en" />
+    <link rel="alternate" hreflang="ko" href="{{ request.base_url }}kicks/{{ slug }}?lang=ko" />
+    <link rel="alternate" hreflang="ja" href="{{ request.base_url }}kicks/{{ slug }}?lang=ja" />
+    <link rel="alternate" hreflang="x-default" href="{{ request.base_url }}kicks/{{ slug }}?lang=en" />
+    {% else %}
+    <link rel="alternate" hreflang="en" href="{{ request.base_url }}?lang=en" />
+    <link rel="alternate" hreflang="ko" href="{{ request.base_url }}?lang=ko" />
+    <link rel="alternate" hreflang="ja" href="{{ request.base_url }}?lang=ja" />
+    <link rel="alternate" hreflang="x-default" href="{{ request.base_url }}?lang=en" />
+    {% endif %}
+
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
     <header>
-        <!-- 로고 클릭 시 현재 언어 유지 -->
         <a href="/?lang={{ current_lang }}" class="logo">PAST<span>HYPE</span></a>
-
-        <!-- 언어 선택기 추가 -->
         <div class="lang-switcher">
             {% set base_url = request.url.path %}
             <a href="{{ base_url }}?lang=en" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
@@ -27,7 +56,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 PastHype. All rights reserved.</p>
+        <p>&copy; 2026 PastHype. All rights reserved.</p>
     </footer>
 
 </body>
