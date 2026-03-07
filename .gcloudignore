@@ -1,6 +1,7 @@
 .git
 .gitignore
 .dockerignore
+.gcloudignore
 __pycache__
 *.pyc
 .env
@@ -10,3 +11,4 @@ venv
 README.md
 cloudbuild.yaml
 command.txt
+pasthype-firebase-adminsdk*.json

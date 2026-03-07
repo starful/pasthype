@@ -5,4 +5,5 @@ python-frontmatter
 markdown
 pandas
 python-dotenv
-google-generativeaifirebase-admin
+google-generativeai
+firebase-admin

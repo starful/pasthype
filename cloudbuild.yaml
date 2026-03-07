@@ -6,7 +6,8 @@ steps:
     id: 'build-app'
     args: [
       'build',
-      '--cache-from', 'us-central1-docker.pkg.dev/$PROJECT_ID/pasthype-repo/app:latest',
+      '--no-cache',  # 캐시를 사용하지 않음
+      # '--cache-from', 'us-central1-docker.pkg.dev/$PROJECT_ID/pasthype-repo/app:latest',
       '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/pasthype-repo/app:latest',
       '.'
     ]
@@ -32,8 +33,12 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      # [추가됨] Secret을 파일로 마운트하는 설정
+      - '--set-secrets'
+      - '/secrets/firebase-key.json=firebase-credentials:latest' # Secret 이름과 버전 지정
       - '--set-env-vars'
-      - 'APP_DOMAIN=${_APP_DOMAIN},GCS_BUCKET_NAME=${_GCS_BUCKET_NAME}'
+      # [수정됨] GOOGLE_APPLICATION_CREDENTIALS 환경변수로 마운트된 파일 경로 지정
+      - 'APP_DOMAIN=${_APP_DOMAIN},GCS_BUCKET_NAME=${_GCS_BUCKET_NAME},GOOGLE_APPLICATION_CREDENTIALS=/secrets/firebase-key.json'
     waitFor: ['push-app']
 
 # -------------------------------------------------------------
