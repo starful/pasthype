@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="detail-container" style="padding-top: 40px;">
+    <div class="detail-header">
+        <h1 class="detail-title">Contact Us</h1>
+        <div class="detail-meta">We'd love to hear from you!</div>
+    </div>
+
+    <div class="content-body" style="text-align: center;">
+        <p>If you have any questions, feedback, or business inquiries, please fill out the form below. We will get back to you as soon as possible.</p>
+        
+        <!-- Google Apps Script Form Iframe -->
+        <div style="margin-top: 30px; background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #333;">
+            <iframe 
+                src="https://script.google.com/macros/s/AKfycbxdf7uSL_57TPUOqACDUVNdg5VBCkUez_FGhQeHsciSsxqHAZQcbgKPp_1nqYKD4t46/exec" 
+                width="100%" 
+                height="600" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                style="background: transparent;">
+                Loading…
+            </iframe>
+        </div>
+    </div>
+</div>
+{% endblock %}

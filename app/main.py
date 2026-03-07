@@ -288,3 +288,23 @@ async def like_post(request: Request, slug: str):
 @app.post("/api/dislike/{slug}")
 async def dislike_post(request: Request, slug: str):
     return await process_reaction(request, slug, "dislike")
+
+@app.get("/privacy")
+async def privacy(request: Request, lang: str = Query("en", enum=SUPPORTED_LANGS)):
+    """개인정보처리방침 페이지"""
+    return templates.TemplateResponse("privacy.html", {
+        "request": request,
+        "current_lang": lang,
+        "page_title": "Privacy Policy | PastHype",
+        "current_url": str(request.url)
+    })
+
+@app.get("/contact")
+async def contact(request: Request, lang: str = Query("en", enum=SUPPORTED_LANGS)):
+    """문의하기 페이지"""
+    return templates.TemplateResponse("contact.html", {
+        "request": request,
+        "current_lang": lang,
+        "page_title": "Contact Us | PastHype",
+        "current_url": str(request.url)
+    })

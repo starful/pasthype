@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- [SEO] 동적 Title & Description -->
-    <title>{{ page_title if page_title else 'PastHype | Legacy Laced' }}</title>
+    <title>{{ page_title if page_title else 'PastHype | Where Heritage Meets Hype' }}</title>
     <meta name="description" content="{{ page_description if page_description else 'Discover the ultimate crossover of historical icons and modern sneaker culture.' }}">
     <meta name="keywords" content="Sneakers, History, Streetwear, Culture, PastHype, {{ meta.sneaker_model if meta else '' }}">
 
-    <!-- [SEO] Open Graph (Facebook, LinkedIn, Slack 등 공유용 미리보기) -->
+    <!-- [SEO] Open Graph (Facebook, LinkedIn, Kakao 등 공유용) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ current_url }}">
-    <meta property="og:title" content="{{ page_title if page_title else 'PastHype | Legacy Laced' }}">
-    <meta property="og:description" content="{{ page_description if page_description else 'Where Heritage meets Hype.' }}">
+    <meta property="og:title" content="{{ page_title if page_title else 'PastHype | Where Heritage Meets Hype' }}">
+    <meta property="og:description" content="{{ page_description if page_description else 'Discover the ultimate crossover of historical icons and modern sneaker culture.' }}">
     <meta property="og:image" content="{{ og_image if og_image else 'https://pasthype.com/static/img/default_og.jpg' }}">
 
     <!-- [SEO] Twitter Card (X/Twitter 공유용) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ current_url }}">
-    <meta name="twitter:title" content="{{ page_title if page_title else 'PastHype | Legacy Laced' }}">
-    <meta name="twitter:description" content="{{ page_description if page_description else 'Where Heritage meets Hype.' }}">
+    <meta name="twitter:title" content="{{ page_title if page_title else 'PastHype | Where Heritage Meets Hype' }}">
+    <meta name="twitter:description" content="{{ page_description if page_description else 'Discover the ultimate crossover of historical icons and modern sneaker culture.' }}">
     <meta name="twitter:image" content="{{ og_image if og_image else 'https://pasthype.com/static/img/default_og.jpg' }}">
 
-    <!-- [SEO] 다국어 지원 (hreflang) - 검색 엔진에 언어 버전 알림 -->
+    <!-- [SEO] 다국어 지원 (hreflang) -->
     {% if slug %}
     <link rel="alternate" hreflang="en" href="{{ request.base_url }}kicks/{{ slug }}?lang=en" />
     <link rel="alternate" hreflang="ko" href="{{ request.base_url }}kicks/{{ slug }}?lang=ko" />
@@ -37,17 +37,38 @@
     <link rel="alternate" hreflang="x-default" href="{{ request.base_url }}?lang=en" />
     {% endif %}
 
+    <link rel="icon" type="image/png" href="/static/img/favicon.png">
     <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH6XVMJ5JL"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KH6XVMJ5JL');
+    </script>
+
 </head>
 <body>
 
-    <header>
-        <a href="/?lang={{ current_lang }}" class="logo">PAST<span>HYPE</span></a>
-        <div class="lang-switcher">
-            {% set base_url = request.url.path %}
-            <a href="{{ base_url }}?lang=en" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
-            <a href="{{ base_url }}?lang=ko" class="{% if current_lang == 'ko' %}active{% endif %}">KR</a>
-            <a href="{{ base_url }}?lang=ja" class="{% if current_lang == 'ja' %}active{% endif %}">JP</a>
+    <!-- [수정됨] 헤더 영역 구조를 중앙 정렬에 맞게 개편 -->
+    <header class="main-header">
+        <div class="header-content">
+            <!-- 1. 중앙 로고 -->
+            <a href="/?lang={{ current_lang }}" class="logo-link">
+                <!-- ⚠️ 파일명이 logo.png가 맞는지 확인! -->
+                <img src="/static/img/logo_w.png" alt="PASTHYPE Logo" class="header-logo">
+            </a>
+            
+            <!-- 2. 중앙 언어 선택기 (둥근 뱃지 형태) -->
+            <div class="lang-switcher-pill">
+                {% set base_url = request.url.path %}
+                <button onclick="changeLanguage('ja')" class="{% if current_lang == 'ja' %}active{% endif %}">日本語</button>
+                <button onclick="changeLanguage('en')" class="{% if current_lang == 'en' %}active{% endif %}">English</button>
+                <button onclick="changeLanguage('ko')" class="{% if current_lang == 'ko' %}active{% endif %}">한국어</button>
+            </div>
         </div>
     </header>
 
@@ -55,9 +76,23 @@
         {% block content %}{% endblock %}
     </main>
 
+    <!-- [수정됨] Footer에 링크 추가 -->
     <footer>
+        <div class="footer-links">
+            <a href="/privacy?lang={{ current_lang }}">Privacy Policy</a>
+            <span>|</span>
+            <a href="/contact?lang={{ current_lang }}">Contact Us</a>
+        </div>
         <p>&copy; 2026 PastHype. All rights reserved.</p>
     </footer>
 
+    <!-- 언어 변경 스크립트 유지 -->
+    <script>
+        function changeLanguage(lang) {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lang', lang);
+            window.location.replace(url.toString());
+        }
+    </script>
 </body>
 </html>
