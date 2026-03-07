@@ -1,0 +1,10 @@
+# .dockerignore
+.git
+.gitignore
+__pycache__
+venv
+.env
+.DS_Store
+README.md
+cloudbuild.yaml
+command.txt

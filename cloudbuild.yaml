@@ -1,0 +1,45 @@
+# cloudbuild.yaml
+
+steps:
+  # 1. Docker 이미지 빌드 (로컬에서 이미 생성된 MD 파일들을 포함)
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build-app'
+    args: [
+      'build',
+      '--cache-from', 'us-central1-docker.pkg.dev/$PROJECT_ID/pasthype-repo/app:latest',
+      '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/pasthype-repo/app:latest',
+      '.'
+    ]
+
+  # 2. 이미지 푸시
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-app'
+    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/pasthype-repo/app:latest']
+    waitFor: ['build-app']
+
+  # 3. Cloud Run 배포
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy-app'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'pasthype-web'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/pasthype-repo/app:latest'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'APP_DOMAIN=${_APP_DOMAIN},GCS_BUCKET_NAME=${_GCS_BUCKET_NAME}'
+    waitFor: ['push-app']
+
+# -------------------------------------------------------------
+# 변수 설정 (기본값을 여기에 직접 정의)
+# -------------------------------------------------------------
+substitutions:
+  _REGION: 'us-central1'
+  _GCS_BUCKET_NAME: 'pasthype-data'
+  _APP_DOMAIN: 'https://pasthype.com'

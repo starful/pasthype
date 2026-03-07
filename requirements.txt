@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+jinja2
+python-frontmatter
+markdown
+pandas
+python-dotenv
+google-generativeaifirebase-admin

@@ -1,0 +1,23 @@
+<!-- --- START OF FILE app/templates/index.html --- -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section">
+    <!-- (생략) -->
+</div>
+
+<div class="gallery-grid">
+    {% for item in kicks %}
+    <!-- [수정] 링크에 ?lang= 파라미터 추가 -->
+    <!-- item.slug는 build_content.py에서 새로 추가한 순수 슬러그 필드입니다 -->
+    <a href="/kicks/{{ item.slug }}?lang={{ current_lang }}" class="card">
+        <div class="card-img" style="background-image: url('{{ item.image }}');"></div>
+        <div class="card-info">
+            <h3>{{ item.name }}</h3>
+            <p class="sneaker-name">{{ item.sneaker }}</p>
+            <span class="era-badge">{{ item.era }}</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

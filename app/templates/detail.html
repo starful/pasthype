@@ -1,0 +1,95 @@
+<!-- --- START OF FILE app/templates/detail.html --- -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="detail-container">
+    <img src="{{ image_url }}" class="detail-img" alt="{{ meta.title }}">
+
+    <div class="detail-content">
+        <div class="detail-header">
+            <h1 class="detail-title">{{ meta.title }}</h1>
+            <div class="detail-subtitle">{{ meta.sneaker_model }}</div>
+            <div class="detail-meta">
+                <span>{{ meta.era }}</span>
+                {% if meta.resell_price %}
+                <span>• Est. Resell: {{ meta.resell_price }}</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="content-body">
+            {{ content | safe }}
+        </div>
+
+        <!-- [신규] 좋아요/싫어요 섹션 -->
+        <div class="reactions-section">
+            <button id="likeBtn" class="reaction-btn like-btn">
+                👍 <span id="likeCount">0</span>
+            </button>
+            <button id="dislikeBtn" class="reaction-btn dislike-btn">
+                👎 <span id="dislikeCount">0</span>
+            </button>
+        </div>
+
+        <a href="/?lang={{ current_lang }}" class="back-btn">← Back to Gallery</a>
+    </div>
+</div>
+
+<!-- [신규] 자바스크립트 추가 -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 현재 게시물의 slug를 가져옴 (템플릿 변수 활용)
+        const slug = "{{ slug }}";
+        const likeBtn = document.getElementById('likeBtn');
+        const dislikeBtn = document.getElementById('dislikeBtn');
+        const likeCountSpan = document.getElementById('likeCount');
+        const dislikeCountSpan = document.getElementById('dislikeCount');
+
+        // 1. 페이지 로드 시 현재 카운트 가져오기
+        async function fetchReactions() {
+            try {
+                const response = await fetch(`/api/reactions/${slug}`);
+                const data = await response.json();
+                likeCountSpan.textContent = data.likes;
+                dislikeCountSpan.textContent = data.dislikes;
+            } catch (error) {
+                console.error('Error fetching reactions:', error);
+            }
+        }
+
+        // 2. 버튼 클릭 핸들러 함수
+        async function handleReaction(type) {
+            // 버튼 비활성화 (중복 클릭 방지)
+            likeBtn.disabled = true;
+            dislikeBtn.disabled = true;
+
+            try {
+                const response = await fetch(`/api/${type}/${slug}`, { method: 'POST' });
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    // 서버에서 받은 최신 카운트로 업데이트
+                    likeCountSpan.textContent = data.likes;
+                    dislikeCountSpan.textContent = data.dislikes;
+                    
+                    // (선택사항) 내 액션에 따라 버튼 스타일 변경 피드백 구현 가능
+                }
+            } catch (error) {
+                console.error(`Error sending ${type}:`, error);
+                alert('An error occurred. Please try again.');
+            } finally {
+                // 버튼 다시 활성화
+                likeBtn.disabled = false;
+                dislikeBtn.disabled = false;
+            }
+        }
+
+        // 이벤트 리스너 등록
+        likeBtn.addEventListener('click', () => handleReaction('like'));
+        dislikeBtn.addEventListener('click', () => handleReaction('dislike'));
+
+        // 초기 데이터 로드 실행
+        fetchReactions();
+    });
+</script>
+{% endblock %}

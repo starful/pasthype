@@ -1,0 +1,110 @@
+[
+  {
+    "lang": "ja",
+    "slug": "hangul",
+    "file": "hangul_ja.md",
+    "name": "ハングル：民のための文字、知性のソールと出会う",
+    "sneaker": "ニューバランス 992 グレー",
+    "era": "Scholar",
+    "image": "/static/img/hangul.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "physics",
+    "file": "physics.md",
+    "name": "Relativity in Motion: Why the Tom Sachs x Nike Mars Yard 2.0 is the Only Choice for the Father of Modern Physics",
+    "sneaker": "Tom Sachs x Nike Mars Yard 2.0",
+    "era": "Relativity",
+    "image": "/static/img/physics.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "hangul",
+    "file": "hangul_ko.md",
+    "name": "한글: 백성을 위한 문자가 지식인의 솔(Sole)을 만났을 때",
+    "sneaker": "뉴발란스 992 '그레이'",
+    "era": "Scholar",
+    "image": "/static/img/hangul.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "red-face",
+    "file": "red-face.md",
+    "name": "The God of War in 'Lost & Found': Guan Yu’s Eternal Flex",
+    "sneaker": "Air Jordan 1 Retro High OG 'Chicago' (Lost & Found)",
+    "era": "Late Eastern Han / Three Kingdoms",
+    "image": "/static/img/red-face.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "hangul",
+    "file": "hangul.md",
+    "name": "Hangul: The Script of the People Meets the Sole of the Intellectual",
+    "sneaker": "New Balance 992 'Grey'",
+    "era": "Scholar",
+    "image": "/static/img/hangul.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "red-face",
+    "file": "red-face_ja.md",
+    "name": "「Lost & Found」を纏った武神：関羽の永遠のフレックス",
+    "sneaker": "エア ジョーダン 1 レトロ ハイ OG 'Chicago' (Lost & Found)",
+    "era": "Late Eastern Han / Three Kingdoms",
+    "image": "/static/img/red-face.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "physics",
+    "file": "physics_ja.md",
+    "name": "『相対性の躍動：なぜトム・サックス × ナイキ マーズ ヤード 2.0が「現代物理学の父」にとって唯一無二の選択なのか』",
+    "sneaker": "トム・サックス × ナイキ マーズ ヤード 2.0",
+    "era": "Relativity",
+    "image": "/static/img/physics.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "luxury",
+    "file": "luxury_ko.md",
+    "name": "하입의 여왕: 마리 앙투아네트가 왕좌를 버리고 디올 x 에어 조던 1을 선택했을 이유",
+    "sneaker": "디올 x 에어 조던 1 하이 OG",
+    "era": "Late 18th Century / The Cake Era",
+    "image": "/static/img/luxury.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "red-face",
+    "file": "red-face_ko.md",
+    "name": "'로스트 앤 파운드'를 신은 무신: 관우의 영원한 플렉스",
+    "sneaker": "나이키 에어 조던 1 레트로 하이 OG '시카고' (로스트 앤 파운드)",
+    "era": "Late Eastern Han / Three Kingdoms",
+    "image": "/static/img/red-face.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "luxury",
+    "file": "luxury.md",
+    "name": "The Queen of Hype: Why Marie Antoinette Would Exchange the Throne for Dior x Air Jordan 1s",
+    "sneaker": "Dior x Air Jordan 1 High OG",
+    "era": "Late 18th Century / The Cake Era",
+    "image": "/static/img/luxury.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "luxury",
+    "file": "luxury_ja.md",
+    "name": "ハイプの女王：マリー・アントワネットが玉座を捨ててでもディオール x エア ジョーダン 1を手に入れたい理由",
+    "sneaker": "ディオール x エア ジョーダン 1 ハイ OG",
+    "era": "Late 18th Century / The Cake Era",
+    "image": "/static/img/luxury.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "physics",
+    "file": "physics_ko.md",
+    "name": "움직이는 상대성 이론: 톰 삭스 x 나이키 마스 야드 2.0이 현대 물리학의 아버지에게 유일한 선택인 이유",
+    "sneaker": "톰 삭스 x 나이키 마스 야드 2.0",
+    "era": "Relativity",
+    "image": "/static/img/physics.jpeg"
+  }
+]

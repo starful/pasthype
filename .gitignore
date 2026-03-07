@@ -1,0 +1,13 @@
+# .gitignore
+.env
+__pycache__/
+*.pyc
+venv/
+.DS_Store
+*.zip
+*.tar.gz
+app/content/*.md
+data/*.csv
+command.txtcommand.txt
+command.txt
+pasthype-firebase-adminsdk-fbsvc-71c140942c.json

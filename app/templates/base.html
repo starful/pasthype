@@ -1,0 +1,34 @@
+<!-- --- START OF FILE app/templates/base.html --- -->
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PastHype | Legacy Laced</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <header>
+        <!-- 로고 클릭 시 현재 언어 유지 -->
+        <a href="/?lang={{ current_lang }}" class="logo">PAST<span>HYPE</span></a>
+
+        <!-- 언어 선택기 추가 -->
+        <div class="lang-switcher">
+            {% set base_url = request.url.path %}
+            <a href="{{ base_url }}?lang=en" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
+            <a href="{{ base_url }}?lang=ko" class="{% if current_lang == 'ko' %}active{% endif %}">KR</a>
+            <a href="{{ base_url }}?lang=ja" class="{% if current_lang == 'ja' %}active{% endif %}">JP</a>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PastHype. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
