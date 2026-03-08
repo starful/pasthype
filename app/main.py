@@ -21,6 +21,7 @@ from fastapi.concurrency import run_in_threadpool
 
 CLOUD_SECRET_PATH = '/secrets/firebase-key.json'
 LOCAL_SECRET_PATH = 'pasthype-firebase-adminsdk-fbsvc-71c140942c.json' 
+COLLECTION_NAME = "pasthype"
 
 try:
     if os.path.exists(CLOUD_SECRET_PATH):
@@ -206,7 +207,7 @@ async def get_reactions(slug: str):
     if db is None:
         return {"likes": 0, "dislikes": 0, "error": "Database not connected"}
         
-    doc_ref = db.collection('posts').document(slug)
+    doc_ref = db.collection(COLLECTION_NAME).document(slug)
     doc = await run_in_threadpool(doc_ref.get)
 
     if doc.exists:
@@ -214,71 +215,68 @@ async def get_reactions(slug: str):
         return {"likes": data.get("likes_count", 0), "dislikes": data.get("dislikes_count", 0)}
     return {"likes": 0, "dislikes": 0}
 
+
+# 파이어베이스 통신(동기)을 전담할 심플한 내부 함수
+def execute_reaction_db(slug: str, safe_ip: str, new_type: str):
+    post_ref = db.collection(COLLECTION_NAME).document(slug)
+    reaction_ref = post_ref.collection('reactions').document(safe_ip)
+
+    # 1. 기존 데이터 읽기
+    reaction_doc = reaction_ref.get()
+    
+    likes_inc = 0
+    dislikes_inc = 0
+    batch = db.batch() # 트랜잭션 대신 심플한 Batch(일괄 처리) 사용
+
+    # 2. 로직 처리
+    if not reaction_doc.exists:
+        if new_type == "like": likes_inc = 1
+        else: dislikes_inc = 1
+        batch.set(reaction_ref, {"type": new_type})
+        current_type = None
+    else:
+        current_type = reaction_doc.to_dict().get("type")
+        if current_type == new_type:
+            if new_type == "like": likes_inc = -1
+            else: dislikes_inc = -1
+            batch.delete(reaction_ref)
+        else:
+            if new_type == "like":
+                likes_inc = 1
+                dislikes_inc = -1
+            else:
+                likes_inc = -1
+                dislikes_inc = 1
+            batch.update(reaction_ref, {"type": new_type})
+
+    # 3. 통계 반영 및 일괄 저장
+    batch.set(post_ref, {
+        "likes_count": firestore.Increment(likes_inc),
+        "dislikes_count": firestore.Increment(dislikes_inc)
+    }, merge=True)
+    
+    batch.commit() # 에러 없이 한 번에 안전하게 저장!
+    
+    # 4. 결과 반환
+    action_result = "added" if (not reaction_doc.exists) or current_type != new_type else "removed"
+    return action_result, post_ref.get().to_dict()
+
+
 async def process_reaction(request: Request, slug: str, reaction_type: str):
     if db is None:
          raise HTTPException(status_code=500, detail="Database connection failed")
 
-    client_ip = get_client_ip(request)
-    safe_ip = client_ip.replace(".", "_").replace(":", "_")
+    safe_ip = get_client_ip(request).replace(".", "_").replace(":", "_")
 
-    post_ref = db.collection('posts').document(slug)
-    reaction_ref = post_ref.collection('reactions').document(safe_ip)
+    # 여기서 execute_reaction_db 함수를 통째로 쓰레드풀에 던짐 (안전함)
+    result, data = await run_in_threadpool(execute_reaction_db, slug, safe_ip, reaction_type)
 
-    @firestore.transactional
-    def update_in_transaction(transaction, post_ref, reaction_ref, new_type):
-        try:
-            post_doc = next(transaction.get(post_ref))
-        except StopIteration:
-            post_doc = None
-
-        try:
-            reaction_doc = next(transaction.get(reaction_ref))
-        except StopIteration:
-            reaction_doc = None
-
-        likes_inc = 0
-        dislikes_inc = 0
-
-        if post_doc is None or not post_doc.exists:
-            transaction.set(post_ref, {"likes_count": 0, "dislikes_count": 0})
-
-        if reaction_doc is None or not reaction_doc.exists:
-            if new_type == "like": likes_inc = 1
-            else: dislikes_inc = 1
-            transaction.set(reaction_ref, {"type": new_type})
-            current_type = None
-        else:
-            current_type = reaction_doc.to_dict().get("type")
-            if current_type == new_type:
-                if new_type == "like": likes_inc = -1
-                else: dislikes_inc = -1
-                transaction.delete(reaction_ref)
-            else:
-                if new_type == "like":
-                    likes_inc = 1
-                    dislikes_inc = -1
-                else:
-                    likes_inc = -1
-                    dislikes_inc = 1
-                transaction.update(reaction_ref, {"type": new_type})
-
-        transaction.update(post_ref, {
-            "likes_count": firestore.Increment(likes_inc),
-            "dislikes_count": firestore.Increment(dislikes_inc)
-        })
-        
-        return "added" if (reaction_doc is None or not reaction_doc.exists) or current_type != new_type else "removed"
-
-    transaction = db.transaction()
-    result = await run_in_threadpool(update_in_transaction, transaction, post_ref, reaction_ref, reaction_type)
-    
-    updated_doc = await run_in_threadpool(post_ref.get)
-    data = updated_doc.to_dict()
     return {
         "status": "success", 
         "action": result,
         "likes": data.get("likes_count", 0), 
-        "dislikes": data.get("dislikes_count", 0)
+        "dislikes": data.get("dislikes_count", 0),
+        "current_type": reaction_type if result == "added" else None
     }
 
 @app.post("/api/like/{slug}")
