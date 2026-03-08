@@ -1,6 +1,33 @@
 [
   {
     "lang": "ja",
+    "slug": "macedonian-armor",
+    "file": "macedonian-armor_ja.md",
+    "name": "「ザ・テン」を纏った王の中の王：アレクサンドロスのマケドニアン・フレックス",
+    "sneaker": "エア ジョーダン 1 レトロ ハイ 'Off-White' シカゴ",
+    "era": "Bucephalus (336–323 BCE)",
+    "image": "/static/img/macedonian-armor.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "bicorne-hat",
+    "file": "bicorne-hat_ko.md",
+    "name": "꼬마 상병의 황금빛 발걸음: 버질 아블로의 루이 비통 AF1을 신은 나폴레옹 보나파르트의 제국적 플렉스",
+    "sneaker": "루이 비통 x 나이키 에어 포스 1 '메탈릭 골드'",
+    "era": "Hand-in-waistcoat (Napoleonic Era)",
+    "image": "/static/img/bicorne-hat.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "bicorne-hat",
+    "file": "bicorne-hat.md",
+    "name": "The Little Corporal's Golden Step: Napoleon Bonaparte’s Imperial Flex in Virgil Abloh’s Louis Vuitton AF1s",
+    "sneaker": "Louis Vuitton x Nike Air Force 1 'Metallic Gold'",
+    "era": "Hand-in-waistcoat (Napoleonic Era)",
+    "image": "/static/img/bicorne-hat.jpeg"
+  },
+  {
+    "lang": "ja",
     "slug": "hangul",
     "file": "hangul_ja.md",
     "name": "ハングル：民のための文字、知性のソールと出会う",
@@ -10,12 +37,30 @@
   },
   {
     "lang": "en",
+    "slug": "top-hat",
+    "file": "top-hat.md",
+    "name": "The Railsplitter's High Top: Why the Air Jordan 1 'Shadow' is Abraham Lincoln’s Ultimate Flex",
+    "sneaker": "Air Jordan 1 Retro High OG 'Shadow'",
+    "era": "The Era of the Beard (1860s)",
+    "image": "/static/img/top-hat.jpeg"
+  },
+  {
+    "lang": "en",
     "slug": "physics",
     "file": "physics.md",
     "name": "Relativity in Motion: Why the Tom Sachs x Nike Mars Yard 2.0 is the Only Choice for the Father of Modern Physics",
     "sneaker": "Tom Sachs x Nike Mars Yard 2.0",
     "era": "Relativity",
     "image": "/static/img/physics.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "macedonian-armor",
+    "file": "macedonian-armor.md",
+    "name": "The King of Kings in 'The Ten': Alexander’s Macedonian Flex",
+    "sneaker": "Air Jordan 1 Retro High 'Off-White' Chicago",
+    "era": "Bucephalus (336–323 BCE)",
+    "image": "/static/img/macedonian-armor.jpeg"
   },
   {
     "lang": "en",
@@ -73,6 +118,24 @@
   },
   {
     "lang": "ja",
+    "slug": "bicorne-hat",
+    "file": "bicorne-hat_ja.md",
+    "name": "「小さな伍長」の黄金の一歩：ヴァージル・アブローによるルイ・ヴィトン AF1を履いたナポレオン・ボナパルトの帝国的フレックス",
+    "sneaker": "ルイ・ヴィトン × ナイキ エア フォース 1 'メタリックゴールド'",
+    "era": "Hand-in-waistcoat (Napoleonic Era)",
+    "image": "/static/img/bicorne-hat.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "macedonian-armor",
+    "file": "macedonian-armor_ko.md",
+    "name": "'더 텐'을 신은 만왕의 왕: 알렉산더의 마케도니아식 플렉스",
+    "sneaker": "에어 조던 1 레트로 하이 '오프화이트' 시카고",
+    "era": "Bucephalus (336–323 BCE)",
+    "image": "/static/img/macedonian-armor.jpeg"
+  },
+  {
+    "lang": "ja",
     "slug": "armor",
     "file": "armor_ja.md",
     "name": "クロムの乙女：ジャンヌ・ダルクが究極のフォームポジット・ヘッズである理由",
@@ -106,6 +169,15 @@
     "sneaker": "Nike ISPA ロード ウォリアー 'Volt'",
     "era": " Notebooks",
     "image": "/static/img/beard.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "top-hat",
+    "file": "top-hat_ja.md",
+    "name": "「レイルプリッター（薪割り人）」のハイカット：なぜエア ジョーダン 1 “シャドウ” はエイブラハム・リンカーンの究極のフレックスなのか",
+    "sneaker": "エア ジョーダン 1 レトロ ハイ OG 'シャドウ'",
+    "era": "The Era of the Beard (1860s)",
+    "image": "/static/img/top-hat.jpeg"
   },
   {
     "lang": "ja",
@@ -147,18 +219,18 @@
     "lang": "ko",
     "slug": "eyeliner",
     "file": "eyeliner_ko.md",
-    "name": "아이라이너",
-    "sneaker": "나이키 x 스와로브스키 에어맥스 97 '메탈릭 골드'",
-    "era": "Asp",
+    "name": "알렉산드리아의 연금술사: 클레오파트라가 에어 조던 1 '피나클' 골드를 선택했을 이유",
+    "sneaker": "에어 조던 1 레트로 하이 OG '피나클' (24K 골드)",
+    "era": "Asp (Ptolemaic Egypt, 30 BCE)",
     "image": "/static/img/eyeliner.jpeg"
   },
   {
     "lang": "en",
     "slug": "eyeliner",
     "file": "eyeliner.md",
-    "name": "Unknown Title",
-    "sneaker": "Unknown Sneaker",
-    "era": "History",
+    "name": "The Alchemist of Alexandria: Why Cleopatra Would Have Chosen the Air Jordan 1 'Pinnacle' Gold",
+    "sneaker": "Air Jordan 1 Retro High OG 'Pinnacle' (24K Gold)",
+    "era": "Asp (Ptolemaic Egypt, 30 BCE)",
     "image": "/static/img/eyeliner.jpeg"
   },
   {
@@ -189,12 +261,21 @@
     "image": "/static/img/beard.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "top-hat",
+    "file": "top-hat_ko.md",
+    "name": "레일스플리터의 하이탑: 왜 에어 조던 1 '쉐도우'가 에이브러햄 링컨의 궁극의 플렉스인가",
+    "sneaker": "에어 조던 1 레트로 하이 OG '쉐도우'",
+    "era": "The Era of the Beard (1860s)",
+    "image": "/static/img/top-hat.jpeg"
+  },
+  {
     "lang": "ja",
     "slug": "eyeliner",
     "file": "eyeliner_ja.md",
-    "name": "アイライナー",
-    "sneaker": "Nike x Swarovski エアマックス 97 'メタリックゴールド'",
-    "era": "Asp",
+    "name": "「アレクサンドリアの錬金術師：なぜクレオパトラはエア ジョーダン 1 『ピナクル』ゴールドを選んだのか」",
+    "sneaker": "エア ジョーダン 1 レトロ ハイ OG 「ピナクル」（24K ゴールド）",
+    "era": "Asp (Ptolemaic Egypt, 30 BCE)",
     "image": "/static/img/eyeliner.jpeg"
   },
   {

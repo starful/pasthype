@@ -17,7 +17,7 @@ from app.config import CSV_PATH, CONTENT_DIR, DATA_DIR, INDEX_PATH, CATEGORIES
 # AI 설정
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-# 모델 설정: 최신 모델 사용 권장
+# 모델 설정: 요청에 따라 gemini-flash-latest 사용
 MODEL = genai.GenerativeModel('gemini-flash-latest')
 
 def slugify(text):
@@ -32,7 +32,7 @@ def slugify(text):
     return text.strip('-')
 
 def generate_kicks_content():
-    """CSV를 읽어 역사적 인물 x 스니커즈 매칭 대하드라마급 리포트 생성 (영어 전용)"""
+    """CSV를 읽어 역사적 인물 x 스니커즈 매칭 대하드라마급 리포트 생성 (JSON 강제, 최대 4개 제한)"""
     if not os.path.exists(CSV_PATH):
         print("❌ CSV 파일이 없습니다.")
         return
@@ -40,9 +40,8 @@ def generate_kicks_content():
     df = pd.read_csv(CSV_PATH)
     os.makedirs(CONTENT_DIR, exist_ok=True)
     
-    print(f"🚀 총 {len(df)}명의 인물에 대한 심층 분석을 시작합니다 (English Mode, Max 4 new items)...")
+    print(f"🚀 총 {len(df)}명의 인물에 대한 심층 분석을 시작합니다 (English Mode, Max 4 new items, JSON Enforced)...")
 
-    # [수정된 부분] 4개 제한 로직 추가
     new_generated_count = 0
     max_to_generate = 4
 
@@ -63,13 +62,10 @@ def generate_kicks_content():
 
         print(f"\n   👟 Generating deep dive for: {name_raw} (New item {new_generated_count + 1}/{max_to_generate}) ...")
         
-        # --- AI 프롬프트 (수정됨: 영어 전용 및 길이 조정) ---
+        # --- AI 프롬프트 (JSON 응답 강제) ---
         prompt = f"""
         Act as a professional fashion historian and sneaker columnist (like Highsnobiety or Hypebeast editor).
         
-        [Crucial Instruction]
-        **WRITE THE ENTIRE OUTPUT STRICTLY IN ENGLISH.** Do not use any other language regardless of the historical figure's origin.
-
         Target Profile:
         - Name: {name_raw}
         - Era: {row['era']}
@@ -77,93 +73,81 @@ def generate_kicks_content():
         - Traits: {row['keywords']}
 
         [Task]
-        Match a specific sneaker model to this historical figure and write a VERY DETAILED, LONG-FORM article (approx. 1200-1500+ words, extremely detailed).
+        Match a specific sneaker model to this historical figure and write a VERY DETAILED, LONG-FORM article (approx. 1200-1500+ words).
         
-        [Content Requirements]
-        1. **Deep Storytelling**: Don't just list facts. Imagine a parallel universe where this figure walks into a sneaker store. The tone should be immersive.
-        2. **Sneaker Selection**: Choose a shoe that perfectly matches their personality, history, and color palette.
-        3. **Tone**: Witty, professional, trendy, and slightly humorous. Use sneaker slang properly.
-        4. **Structure**:
-            - **The Fit Check**: A vivid description of their outfit including the shoes.
-            - **Historical Connection**: Why this shoe? Connect specific historical events to the shoe's design/history.
-            - **Color Theory**: Analyze the color match (e.g., Royal Blue for a King).
-            - **Styling Guide**: How would they style it today? (e.g., Traditional robes mixed with modern streetwear).
-            - **User Reactions**: Imaginary comments from other historical figures (must be in English).
+        [Crucial Instruction]
+        **WRITE THE ENTIRE OUTPUT STRICTLY IN ENGLISH.** 
+        **YOU MUST RESPOND ONLY WITH A VALID JSON OBJECT. NO MARKDOWN FORMATTING OUTSIDE THE JSON.**
 
-        [Output Format]
-        Output ONLY the raw content for a YAML Frontmatter Markdown file. No markdown code blocks (```).
-        
-        ---
-        title: "{name_raw}"
-        title_slug: "{file_slug}"
-        sneaker_model: "[Full Model Name]"
-        sneaker_brand: "[Brand Name]"
-        era: "{row['era']}"
-        resell_price: "[Estimated Price in USD]"
-        image_prompt: "Cinematic portrait of {name_raw} wearing [Sneaker Model], [Era] clothing mixed with streetwear, highly detailed texture, dramatic lighting, 8k, unreal engine 5 render style."
-        ---
-        
-        ## 🕶️ The Fit Check
-        (Write a long, immersive introduction describing the visual impact.)
+        The JSON object must have exactly these keys:
+        "title": A catchy title for the article (e.g., "The God of War in Lost & Found: Guan Yu's Eternal Flex")
+        "sneaker_model": The full name of the matched sneaker.
+        "sneaker_brand": The brand of the sneaker.
+        "era": The era of the figure (e.g., "{row['era']}").
+        "resell_price": Estimated resell price in USD (e.g., "$500").
+        "image_prompt": A detailed prompt to generate an image of this figure wearing the sneaker.
+        "content_body": The entire article content in Markdown format. MUST include sections: ## 🕶️ The Fit Check, ## 👟 Why This Kicks?, ## 🎨 Color & Design DNA, ## 👕 OOTD Styling Guide, ## 💬 Imaginary Reactions. Use line breaks (\\n) properly inside the string.
 
-        ## 👟 Why This Kicks?
-        (Deep dive into the connection. Use at least 3-4 paragraphs.)
-
-        ## 🎨 Color & Design DNA
-        (Analyze the materials, colors, and silhouette in relation to the figure's history.)
-
-        ## 👕 OOTD Styling Guide
-        (Practical styling tips blending historical attire with modern street fashion.)
-
-        ## 💬 Imaginary Reactions
-        (Write 3 funny comments from rival historical figures in English.)
+        [Example Output Structure]
+        {{
+            "title": "Title Here",
+            "sneaker_model": "Sneaker Name",
+            "sneaker_brand": "Brand",
+            "era": "Era",
+            "resell_price": "$100",
+            "image_prompt": "prompt here",
+            "content_body": "## 🕶️ The Fit Check\\nBody text here..."
+        }}
         """
         
         try:
             # 긴 텍스트 생성을 위해 max_output_tokens 설정 추가
             generation_config = genai.types.GenerationConfig(
-                max_output_tokens=4096, 
-                temperature=0.7 
+                max_output_tokens=8192, 
+                temperature=0.7,
+                response_mime_type="application/json" # JSON 강제
             )
             
             response = MODEL.generate_content(
                 prompt,
                 generation_config=generation_config
             )
-            raw_content = response.text.strip()
             
-            # ========================================================
-            # [수정된 핵심 로직] 데이터 정제 및 Frontmatter 파싱 강제화
-            # ========================================================
-            # 1. 불필요한 마크다운 감싸기 제거
-            if raw_content.startswith("```markdown"):
-                raw_content = raw_content[11:].strip()
-            elif raw_content.startswith("```"):
-                raw_content = raw_content[3:].strip()
-            
-            if raw_content.endswith("```"):
-                raw_content = raw_content[:-3].strip()
+            try:
+                data = json.loads(response.text)
+            except json.JSONDecodeError:
+                print(f"   ❌ Error: AI did not return valid JSON for {name_raw}. Skipping.")
+                continue
 
-            # 2. 정규식을 이용하여 --- 사이의 내용(YAML)과 그 아래 내용(Body)을 분리
-            match = re.search(r'^---\s*\n(.*?)\n---\s*\n(.*)', raw_content, re.DOTALL | re.MULTILINE)
-            
-            if match:
-                yaml_content = match.group(1).strip()
-                markdown_body = match.group(2).strip()
-                # 완벽한 형식으로 강제 재조립
-                final_content = f"---\n{yaml_content}\n---\n\n{markdown_body}"
-            else:
-                print(f"   ⚠️ Warning: Could not cleanly extract frontmatter for {name_raw}. Formatting might be broken.")
-                final_content = raw_content # 실패 시 원본 그대로 저장
             # ========================================================
+            # 데이터 정제 및 Frontmatter 파싱 강제화 (Python으로 조립)
+            # ========================================================
+            safe_title = str(data.get('title', name_raw)).replace('"', "'")
+            safe_sneaker = str(data.get('sneaker_model', 'Unknown Sneaker')).replace('"', "'")
+            safe_brand = str(data.get('sneaker_brand', 'Unknown Brand')).replace('"', "'")
+            safe_era = str(data.get('era', 'History')).replace('"', "'")
+            safe_price = str(data.get('resell_price', 'N/A')).replace('"', "'")
+            safe_prompt = str(data.get('image_prompt', '')).replace('"', "'")
+            
+            final_markdown = f"""---
+title: "{safe_title}"
+title_slug: "{file_slug}"
+sneaker_model: "{safe_sneaker}"
+sneaker_brand: "{safe_brand}"
+era: "{safe_era}"
+resell_price: "{safe_price}"
+image_prompt: "{safe_prompt}"
+---
 
+{data.get('content_body', 'Content generation failed.')}
+"""
             # 파일 저장
             with open(file_path, "w", encoding="utf-8") as f:
-                f.write(final_content)
+                f.write(final_markdown)
             
-            print(f"   ✅ Created: {file_slug}.md (Length: {len(final_content)} chars)")
+            print(f"   ✅ Created: {file_slug}.md (JSON parsed successfully, Length: {len(final_markdown)} chars)")
             
-            # [수정된 부분] 새로 생성했을 때만 카운트 증가
+            # 새로 생성했을 때만 카운트 증가
             new_generated_count += 1
             time.sleep(5) 
             
