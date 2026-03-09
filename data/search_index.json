@@ -28,6 +28,24 @@
   },
   {
     "lang": "ja",
+    "slug": "fur-hat",
+    "file": "fur-hat_ja.md",
+    "name": "キックスのカーン：なぜマーズ ヤード オーバーシューが究極の「草原対応」フレックスなのか",
+    "sneaker": "ナイキ クラフト マーズ ヤード オーバーシュー",
+    "era": "The Mongol Empire (13th Century)",
+    "image": "/static/img/fur-hat.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "ruff-collar",
+    "file": "ruff-collar_ko.md",
+    "name": "플렉스의 황금기: 엘리자베스 1세가 나이키 x 루이비통 에어 포스 1 '골드'를 신어야만 하는 이유",
+    "sneaker": "나이키 x 루이비통 에어 포스 1 로우 '골드' (버질 아블로 디자인)",
+    "era": "The Elizabethan Era (Red hair / 16th Century)",
+    "image": "/static/img/ruff-collar.jpeg"
+  },
+  {
+    "lang": "ja",
     "slug": "hangul",
     "file": "hangul_ja.md",
     "name": "ハングル：民のための文字、知性のソールと出会う",
@@ -55,12 +73,39 @@
   },
   {
     "lang": "en",
+    "slug": "white-dress",
+    "file": "white-dress.md",
+    "name": "The Platinum Bombshell in Quilted Luxury: Marilyn Monroe’s A Ma Maniére Moment",
+    "sneaker": "Air Jordan 3 Retro x A Ma Maniére 'Raised By Women'",
+    "era": "1950s Hollywood (Blonde Curls & Red Lips)",
+    "image": "/static/img/white-dress.jpeg"
+  },
+  {
+    "lang": "en",
     "slug": "macedonian-armor",
     "file": "macedonian-armor.md",
     "name": "The King of Kings in 'The Ten': Alexander’s Macedonian Flex",
     "sneaker": "Air Jordan 1 Retro High 'Off-White' Chicago",
     "era": "Bucephalus (336–323 BCE)",
     "image": "/static/img/macedonian-armor.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "cigar",
+    "file": "cigar_ko.md",
+    "name": "영국 불독의 궁극의 플렉스: 뉴발란스 991v2 메이드 인 UK를 신은 윈스턴 처칠",
+    "sneaker": "991v2 메이드 인 UK '네이비/그레이'",
+    "era": "V-sign (World War II Era)",
+    "image": "/static/img/cigar.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "white-dress",
+    "file": "white-dress_ja.md",
+    "name": "キルトのラグジュアリーに包まれたプラチナ・ボムシェル：マリリン・モンローが魅せるア・マ・マニエールの瞬間",
+    "sneaker": "エア ジョーダン 3 レトロ x ア マ マニエール 'Raised By Women'",
+    "era": "1950s Hollywood (Blonde Curls & Red Lips)",
+    "image": "/static/img/white-dress.jpeg"
   },
   {
     "lang": "en",
@@ -79,6 +124,15 @@
     "sneaker": "エア ジョーダン 1 レトロ ハイ OG 'Bred' (Banned)",
     "era": " Laurel wreath",
     "image": "/static/img/toga.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "cigar",
+    "file": "cigar.md",
+    "name": "The British Bulldog’s Ultimate Flex: Winston Churchill in the New Balance 991v2 Made in UK",
+    "sneaker": "991v2 Made in UK 'Navy/Grey'",
+    "era": "V-sign (World War II Era)",
+    "image": "/static/img/cigar.jpeg"
   },
   {
     "lang": "ko",
@@ -115,6 +169,24 @@
     "sneaker": "New Balance 990v3 MiUSA Grey",
     "era": "Scholar",
     "image": "/static/img/hangul.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "fur-hat",
+    "file": "fur-hat_ko.md",
+    "name": "스니커즈의 칸: 마스 야드 오버슈가 대초원을 평정할 궁극의 플렉스인 이유",
+    "sneaker": "나이키 크래프트 마스 야드 오버슈 (Nike Craft Mars Yard Overshoe)",
+    "era": "The Mongol Empire (13th Century)",
+    "image": "/static/img/fur-hat.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "ruff-collar",
+    "file": "ruff-collar_ja.md",
+    "name": "黄金時代のフレックス：エリザベス1世がNike x Louis Vuitton エア フォース 1 “ゴールド”を履きこなす理由",
+    "sneaker": "エア フォース 1 ロー 'ゴールド' (Nike x Louis Vuitton by ヴァージル・アブロー)",
+    "era": "The Elizabethan Era (Red hair / 16th Century)",
+    "image": "/static/img/ruff-collar.jpeg"
   },
   {
     "lang": "ja",
@@ -160,6 +232,24 @@
     "sneaker": "에어 조던 1 레트로 하이 OG '브레드' (밴드)",
     "era": " Laurel wreath",
     "image": "/static/img/toga.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "cigar",
+    "file": "cigar_ja.md",
+    "name": "ブリティッシュ・ブルドッグの究極のフレックス：ニューバランス 991v2 Made in UKを履いたウィンストン・チャーチル",
+    "sneaker": "991v2 Made in UK 'ネイビー/グレー'",
+    "era": "V-sign (World War II Era)",
+    "image": "/static/img/cigar.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "white-dress",
+    "file": "white-dress_ko.md",
+    "name": "퀼팅 럭셔리를 입은 플래티넘 밤쉘: 마릴린 먼로의 아 마 마니에르 모먼트",
+    "sneaker": "에어 조던 3 레트로 x 아 마 마니에르 '레이즈드 바이 위민' (Air Jordan 3 Retro x A Ma Maniére 'Raised By Women')",
+    "era": "1950s Hollywood (Blonde Curls & Red Lips)",
+    "image": "/static/img/white-dress.jpeg"
   },
   {
     "lang": "ja",
@@ -268,6 +358,24 @@
     "sneaker": "에어 조던 1 레트로 하이 OG '쉐도우'",
     "era": "The Era of the Beard (1860s)",
     "image": "/static/img/top-hat.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "ruff-collar",
+    "file": "ruff-collar.md",
+    "name": "The Golden Age of Flex: Why Queen Elizabeth I Would Rock the Nike x Louis Vuitton Air Force 1 'Gold'",
+    "sneaker": "Air Force 1 Low 'Gold' (Nike x Louis Vuitton by Virgil Abloh)",
+    "era": "The Elizabethan Era (Red hair / 16th Century)",
+    "image": "/static/img/ruff-collar.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "fur-hat",
+    "file": "fur-hat.md",
+    "name": "The Khan of Kicks: Why the Mars Yard Overshoe is the Ultimate Steppe-Ready Flex",
+    "sneaker": "Nike Craft Mars Yard Overshoe",
+    "era": "The Mongol Empire (13th Century)",
+    "image": "/static/img/fur-hat.jpeg"
   },
   {
     "lang": "ja",
