@@ -20,12 +20,59 @@
         <p class="hero-subtitle">"What if historical figures met modern streetwear and Hype sneakers?"</p>
         <p class="hero-description">PASTHYPE is a virtual fashion webzine blending forgotten heritage with modern sneaker culture.<br>Discover historical fits rewritten from the ground up.</p>
     {% endif %}
+
+    <!-- [신규 추가] 통계 뱃지 버튼 컨테이너 (스크린샷 참고) -->
+    <div class="stats-container">
+        <!-- 1. 통계 (현재 진열된 신발 수) -->
+        <div class="stat-badge">
+            <span class="stat-icon">🔥</span>
+            <span class="stat-highlight">{{ kicks|length }}</span>
+            <span class="stat-text">
+                {% if current_lang == 'ko' %}레전드 매칭
+                {% elif current_lang == 'ja' %}レジェンド
+                {% else %}Legends Listed{% endif %}
+            </span>
+        </div>
+        
+        <!-- 2. 최근 업데이트 (현재 연/월) -->
+        <div class="stat-badge">
+            <span class="stat-icon">📅</span>
+            <span class="stat-text">
+                {% if current_lang == 'ko' %}최근 업데이트:
+                {% elif current_lang == 'ja' %}最終更新:
+                {% else %}Last Updated:{% endif %}
+            </span>
+            <span class="stat-highlight">2026-03</span>
+        </div>
+        
+        <!-- 3. 강조 뱃지 (노란색 라인 느낌) -->
+        <div class="stat-badge stat-highlight-badge">
+            <span class="stat-icon">🔄</span>
+            <span class="stat-highlight">
+                {% if current_lang == 'ko' %}매주 업데이트
+                {% elif current_lang == 'ja' %}毎週更新
+                {% else %}Updating Weekly{% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- [신규] 가로 스크롤 필터 카테고리 버튼 -->
+<div class="category-filter-container">
+    <!-- 기본값: 전체 보기 (활성화 상태) -->
+    <button class="filter-btn active" data-filter="all">All</button>
+    
+    <!-- 백엔드(main.py)에서 넘겨준 고유 era 목록 반복 출력 -->
+    {% for era in eras %}
+    <button class="filter-btn" data-filter="{{ era }}">{{ era }}</button>
+    {% endfor %}
 </div>
 
 <!-- 갤러리 그리드 시작 -->
-<div class="gallery-grid">
+<div class="gallery-grid" id="galleryGrid">
     {% for item in kicks %}
-    <div class="card">
+    <!-- 필터링을 위해 data-era 속성 추가 (CSS 클래스와 연동) -->
+    <div class="card" data-era="{{ item.era }}">
         <a href="/kicks/{{ item.slug }}?lang={{ current_lang }}" class="card-link">
             <div class="card-img" style="background-image: url('{{ item.image }}');"></div>
             <div class="card-info">
@@ -39,4 +86,37 @@
     </div>
     {% endfor %}
 </div>
+
+<!-- [신규] 카테고리 필터링을 위한 자바스크립트 -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. 모든 버튼에서 active 클래스 제거 후, 클릭된 버튼만 active 추가
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // 2. 클릭된 버튼의 필터 값(data-filter) 가져오기
+                const filterValue = btn.getAttribute('data-filter');
+
+                // 3. 카드들 보이기/숨기기 처리 (즉시 반응)
+                cards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'flex'; // 전체 보기
+                    } else {
+                        // 카드의 data-era 값과 필터 값이 일치하는지 확인
+                        if (card.getAttribute('data-era') === filterValue) {
+                            card.style.display = 'flex'; // 일치하면 보이기
+                        } else {
+                            card.style.display = 'none'; // 다르면 숨기기
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>
 {% endblock %}

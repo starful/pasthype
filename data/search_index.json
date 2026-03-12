@@ -18,6 +18,24 @@
     "image": "/static/img/bicorne-hat.jpeg"
   },
   {
+    "lang": "ja",
+    "slug": "ruff",
+    "file": "ruff_ja.md",
+    "name": "「ああ、哀れなヨリック、彼にはドリップが足りなかった：なぜアレキサンダー・マックイーンのオーバーサイズがグローブ座の至宝にとって唯一の選択肢なのか」",
+    "sneaker": "オーバーサイズ スニーカー（ホワイト／ブラック スカル・エディション）",
+    "era": "Quill",
+    "image": "/static/img/ruff.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "wig",
+    "file": "wig_ko.md",
+    "name": "디올을 입은 레퀴엠: 하프시코드 신동이 궁극의 하이프비스트인 이유",
+    "sneaker": "디올 x 에어 조던 1 하이",
+    "era": "Harpsichord",
+    "image": "/static/img/wig.jpeg"
+  },
+  {
     "lang": "en",
     "slug": "bicorne-hat",
     "file": "bicorne-hat.md",
@@ -25,6 +43,15 @@
     "sneaker": "Louis Vuitton x Nike Air Force 1 'Metallic Gold'",
     "era": "Hand-in-waistcoat (Napoleonic Era)",
     "image": "/static/img/bicorne-hat.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "ruff",
+    "file": "ruff.md",
+    "name": "Alas, Poor Yorick, He Had No Drip: Why the Alexander McQueen Oversized is the Only Choice for the Globe’s Greatest",
+    "sneaker": "Oversized Sneaker (White/Black Skull Edition)",
+    "era": "Quill",
+    "image": "/static/img/ruff.jpeg"
   },
   {
     "lang": "ja",
@@ -55,12 +82,39 @@
   },
   {
     "lang": "en",
+    "slug": "straw-hat",
+    "file": "straw-hat.md",
+    "name": "The Impasto Icon: Why Vincent van Gogh’s 'Street Hawker' SB Dunks Are the Ultimate Post-Impressionist Grail",
+    "sneaker": "Nike SB Dunk Low 'Street Hawker'",
+    "era": "Bandaged ear (Arles/Saint-Rémy, 1889)",
+    "image": "/static/img/straw-hat.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "yellow-tracksuit",
+    "file": "yellow-tracksuit.md",
+    "name": "The Dragon’s Final Form: Why the Nike Kobe 5 Protro 'Bruce Lee' Defines the Yellow Tracksuit Era",
+    "sneaker": "Kobe 5 Protro 'Bruce Lee'",
+    "era": "Nunchucks",
+    "image": "/static/img/yellow-tracksuit.jpeg"
+  },
+  {
+    "lang": "en",
     "slug": "top-hat",
     "file": "top-hat.md",
     "name": "The Railsplitter's High Top: Why the Air Jordan 1 'Shadow' is Abraham Lincoln’s Ultimate Flex",
     "sneaker": "Air Jordan 1 Retro High OG 'Shadow'",
     "era": "The Era of the Beard (1860s)",
     "image": "/static/img/top-hat.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "yellow-tracksuit",
+    "file": "yellow-tracksuit_ja.md",
+    "name": "ドラゴンの最終形態：Nike コービー 5 プロトロ 'ブルース・リー' がイエロー・トラックスーツ時代を象徴する理由",
+    "sneaker": "コービー 5 プロトロ 'ブルース・リー'",
+    "era": "Nunchucks",
+    "image": "/static/img/yellow-tracksuit.jpeg"
   },
   {
     "lang": "en",
@@ -79,6 +133,15 @@
     "sneaker": "Air Jordan 3 Retro x A Ma Maniére 'Raised By Women'",
     "era": "1950s Hollywood (Blonde Curls & Red Lips)",
     "image": "/static/img/white-dress.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "robes",
+    "file": "robes_ko.md",
+    "name": "안정의 성인: 공자가 뉴발란스 990v3를 신었을 이유",
+    "sneaker": "990v3 '그레이'",
+    "era": "The Era of the Great Beard (Spring and Autumn Period)",
+    "image": "/static/img/robes.jpeg"
   },
   {
     "lang": "en",
@@ -126,6 +189,15 @@
     "image": "/static/img/toga.jpeg"
   },
   {
+    "lang": "ja",
+    "slug": "suit",
+    "file": "suit_ja.md",
+    "name": "夢想家のシカゴ：エア ジョーダン 1で歩む非暴力の道",
+    "sneaker": "エア ジョーダン 1 レトロ ハイ OG 'シカゴ'",
+    "era": "I Have a Dream (1963)",
+    "image": "/static/img/suit.jpeg"
+  },
+  {
     "lang": "en",
     "slug": "cigar",
     "file": "cigar.md",
@@ -160,6 +232,15 @@
     "sneaker": "Air Jordan 1 Retro High OG 'Chicago' (Lost & Found)",
     "era": "Late Eastern Han / Three Kingdoms",
     "image": "/static/img/red-face.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "robes",
+    "file": "robes.md",
+    "name": "The Sage of Stability: Why Confucius Would Rock the New Balance 990v3",
+    "sneaker": "990v3 'Grey'",
+    "era": "The Era of the Great Beard (Spring and Autumn Period)",
+    "image": "/static/img/robes.jpeg"
   },
   {
     "lang": "en",
@@ -207,6 +288,51 @@
     "image": "/static/img/macedonian-armor.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "ruff",
+    "file": "ruff_ko.md",
+    "name": "아아, 가여운 요릭, 그에겐 드립(Drip)이 없었네: 왜 알렉산더 맥퀸 오버사이즈가 글로브 극장 최고의 스타를 위한 유일한 선택인가",
+    "sneaker": "오버사이즈 스니커즈 (화이트/블랙 스컬 에디션)",
+    "era": "Quill",
+    "image": "/static/img/ruff.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "wig",
+    "file": "wig_ja.md",
+    "name": "『ディオールのレクイエム：なぜこのチェンバロの神童は究極のハイプビーストなのか』",
+    "sneaker": "Dior x Air Jordan 1 High",
+    "era": "Harpsichord",
+    "image": "/static/img/wig.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "madiba-shirt",
+    "file": "madiba-shirt.md",
+    "name": "The Architect of Peace in Pan-African Prints: Nelson Mandela’s Walk to Freedom in the Nike Air Force 1 BHM",
+    "sneaker": "Nike Air Force 1 Low 'BHM' (2012)",
+    "era": "Fist",
+    "image": "/static/img/madiba-shirt.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "suit",
+    "file": "suit_ko.md",
+    "name": "꿈꾸는 자의 시카고: 에어 조던 1을 신고 걷는 비폭력의 길",
+    "sneaker": "에어 조던 1 레트로 하이 OG '시카고'",
+    "era": "I Have a Dream (1963)",
+    "image": "/static/img/suit.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "wig",
+    "file": "wig.md",
+    "name": "The Requiem in Dior: Why the Harpsichord Prodigy is the Ultimate Hypebeast",
+    "sneaker": "Dior x Air Jordan 1 High",
+    "era": "Harpsichord",
+    "image": "/static/img/wig.jpeg"
+  },
+  {
     "lang": "ja",
     "slug": "armor",
     "file": "armor_ja.md",
@@ -252,6 +378,33 @@
     "image": "/static/img/white-dress.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "yellow-tracksuit",
+    "file": "yellow-tracksuit_ko.md",
+    "name": "용의 최종 형태: 나이키 코비 5 프로트로 '브루스 리'가 노란색 트레이닝복 시대를 정의하는 이유",
+    "sneaker": "나이키 코비 5 프로트로 '브루스 리'",
+    "era": "Nunchucks",
+    "image": "/static/img/yellow-tracksuit.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "robes",
+    "file": "robes_ja.md",
+    "name": "「安定の賢者：なぜ孔子はニューバランス 990v3を選ぶのか」",
+    "sneaker": "990v3「グレー」",
+    "era": "The Era of the Great Beard (Spring and Autumn Period)",
+    "image": "/static/img/robes.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "straw-hat",
+    "file": "straw-hat_ja.md",
+    "name": "インパストの象徴：ヴィンセント・ファン・ゴッホの「Street Hawker」SBダンクが、なぜ究極の後期印象派グレイ（至高の逸品）なのか",
+    "sneaker": "Nike SB Dunk Low 'Street Hawker'（ストリート・ホーカー）",
+    "era": "Bandaged ear (Arles/Saint-Rémy, 1889)",
+    "image": "/static/img/straw-hat.jpeg"
+  },
+  {
     "lang": "ja",
     "slug": "beard",
     "file": "beard_ja.md",
@@ -279,6 +432,24 @@
     "image": "/static/img/red-face.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "pompadour",
+    "file": "pompadour_ko.md",
+    "name": "24K로 귀환한 록의 제왕: 에어 조던 1 피나클이 엘비스의 궁극적인 라스베이거스 앙코르인 이유",
+    "sneaker": "에어 조던 1 레트로 하이 '피나클' (화이트/골드)",
+    "era": "Jumpsuit Era (1970s Las Vegas)",
+    "image": "/static/img/pompadour.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "madiba-shirt",
+    "file": "madiba-shirt_ko.md",
+    "name": "범아프리카 프린트를 입은 평화의 설계자: 나이키 에어 포스 1 BHM과 함께한 넬슨 만델라의 자유를 향한 길",
+    "sneaker": "나이키 에어 포스 1 로우 'BHM' (2012)",
+    "era": "Fist",
+    "image": "/static/img/madiba-shirt.jpeg"
+  },
+  {
     "lang": "en",
     "slug": "armor",
     "file": "armor.md",
@@ -288,6 +459,15 @@
     "image": "/static/img/armor.jpeg"
   },
   {
+    "lang": "en",
+    "slug": "crown",
+    "file": "crown.md",
+    "name": "The Eternal Sentinel's Armor: Crown’s Timeless Flex in the CLOT x Air Jordan 14 'Terracotta'",
+    "sneaker": "Air Jordan 14 Retro CLOT Terracotta",
+    "era": "Terracotta Army",
+    "image": "/static/img/crown.jpeg"
+  },
+  {
     "lang": "ja",
     "slug": "physics",
     "file": "physics_ja.md",
@@ -295,6 +475,33 @@
     "sneaker": "トム・サックス × ナイキ マーズ ヤード 2.0",
     "era": "Relativity",
     "image": "/static/img/physics.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "dhoti",
+    "file": "dhoti_ja.md",
+    "name": "ジェネラル・パーパス・シューズを履いた平和の使者：ガンディーのミニマリズムがいかにしてハイプを再定義するか",
+    "sneaker": "ナイキ クラフト ジェネラル パーパス シューズ (GPS) 'アーカイブ'",
+    "era": "20th Century / Indian Independence Movement",
+    "image": "/static/img/dhoti.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "crown",
+    "file": "crown_ko.md",
+    "name": "영원한 파수꾼의 갑옷: CLOT x 에어 조던 14 ‘테라코타’로 완성한 크라운의 시대를 초월한 플렉스",
+    "sneaker": "에어 조던 14 레트로 CLOT 테라코타",
+    "era": "Terracotta Army",
+    "image": "/static/img/crown.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "unibrow",
+    "file": "unibrow_ko.md",
+    "name": "초현실주의적인 발걸음: 왜 나이키 덩크 로우 '시엠프레 파밀리아'가 프리다 칼로의 진정한 걸작인가",
+    "sneaker": "나이키 덩크 로우 '시엠프레 파밀리아'",
+    "era": "Post-Revolutionary Mexico / Surrealist Era",
+    "image": "/static/img/unibrow.jpeg"
   },
   {
     "lang": "ko",
@@ -324,6 +531,24 @@
     "image": "/static/img/eyeliner.jpeg"
   },
   {
+    "lang": "ja",
+    "slug": "pompadour",
+    "file": "pompadour_ja.md",
+    "name": "24Kを纏ったロックの王様：Jordan 1 Pinnacleがエルヴィス究極のベガス・アンコールである理由",
+    "sneaker": "Air Jordan 1 Retro High 'Pinnacle' (ホワイト/ゴールド)",
+    "era": "Jumpsuit Era (1970s Las Vegas)",
+    "image": "/static/img/pompadour.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "madiba-shirt",
+    "file": "madiba-shirt_ja.md",
+    "name": "「パン・アフリカン・プリントを纏った平和の設計者：ネルソン・マンデラがナイキ エア フォース 1 BHMで歩む自由への道」",
+    "sneaker": "Nike エア フォース 1 ロー 'BHM' (2012)",
+    "era": "Fist",
+    "image": "/static/img/madiba-shirt.jpeg"
+  },
+  {
     "lang": "ko",
     "slug": "red-face",
     "file": "red-face_ko.md",
@@ -340,6 +565,24 @@
     "sneaker": "Dior x Air Jordan 1 High OG",
     "era": "Late 18th Century / The Cake Era",
     "image": "/static/img/luxury.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "dhoti",
+    "file": "dhoti.md",
+    "name": "The Apostle of Peace in the General Purpose Shoe: How Gandhi’s Minimalism Redefines the Hype",
+    "sneaker": "Nike Craft General Purpose Shoe (GPS) 'Archive'",
+    "era": "20th Century / Indian Independence Movement",
+    "image": "/static/img/dhoti.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "unibrow",
+    "file": "unibrow.md",
+    "name": "The Surrealist Sole: Why the Nike Dunk Low 'Siempre Familia' is Frida Kahlo's Ultimate Masterpiece",
+    "sneaker": "Dunk Low 'Siempre Familia'",
+    "era": "Post-Revolutionary Mexico / Surrealist Era",
+    "image": "/static/img/unibrow.jpeg"
   },
   {
     "lang": "ko",
@@ -378,6 +621,15 @@
     "image": "/static/img/fur-hat.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "straw-hat",
+    "file": "straw-hat_ko.md",
+    "name": "임파스토의 아이콘: 빈센트 반 고흐의 '스트리트 호커' SB 덩크가 궁극의 포스트 인상주의 그레일인 이유",
+    "sneaker": "나이키 SB 덩크 로우 '스트리트 호커' (Street Hawker)",
+    "era": "Bandaged ear (Arles/Saint-Rémy, 1889)",
+    "image": "/static/img/straw-hat.jpeg"
+  },
+  {
     "lang": "ja",
     "slug": "eyeliner",
     "file": "eyeliner_ja.md",
@@ -388,12 +640,57 @@
   },
   {
     "lang": "ja",
+    "slug": "unibrow",
+    "file": "unibrow_ja.md",
+    "name": "「シュールレアリスムの足元：Nike ダンク LOW 'Siempre Familia' がフリーダ・カーロの至高の傑作である理由」",
+    "sneaker": "Nike ダンク LOW 'Siempre Familia'",
+    "era": "Post-Revolutionary Mexico / Surrealist Era",
+    "image": "/static/img/unibrow.jpeg"
+  },
+  {
+    "lang": "ja",
     "slug": "luxury",
     "file": "luxury_ja.md",
     "name": "ハイプの女王：マリー・アントワネットが玉座を捨ててでもディオール x エア ジョーダン 1を手に入れたい理由",
     "sneaker": "ディオール x エア ジョーダン 1 ハイ OG",
     "era": "Late 18th Century / The Cake Era",
     "image": "/static/img/luxury.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "dhoti",
+    "file": "dhoti_ko.md",
+    "name": "제너럴 퍼포즈 슈를 신은 평화의 사도: 간디의 미니멀리즘이 하이프(Hype)를 재정의하는 법",
+    "sneaker": "나이키 크래프트 제너럴 퍼포즈 슈 (GPS) '아카이브'",
+    "era": "20th Century / Indian Independence Movement",
+    "image": "/static/img/dhoti.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "pompadour",
+    "file": "pompadour.md",
+    "name": "The King of Rock in 24K: Why the Jordan 1 Pinnacle is Elvis’s Ultimate Vegas Encore",
+    "sneaker": "Air Jordan 1 Retro High 'Pinnacle' (White/Gold)",
+    "era": "Jumpsuit Era (1970s Las Vegas)",
+    "image": "/static/img/pompadour.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "crown",
+    "file": "crown_ja.md",
+    "name": "永遠の守護者の鎧：CLOT x エア ジョーダン 14 'テラコッタ'でCrownが見せる時を超越したフレックス",
+    "sneaker": "エア ジョーダン 14 レトロ CLOT テラコッタ",
+    "era": "Terracotta Army",
+    "image": "/static/img/crown.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "suit",
+    "file": "suit.md",
+    "name": "The Dreamer’s Chicago: Walking the Path of Nonviolence in the Air Jordan 1",
+    "sneaker": "Air Jordan 1 Retro High OG 'Chicago'",
+    "era": "I Have a Dream (1963)",
+    "image": "/static/img/suit.jpeg"
   },
   {
     "lang": "ko",

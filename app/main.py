@@ -63,7 +63,21 @@ def get_client_ip(request: Request):
 def get_kicks_data():
     if os.path.exists(INDEX_PATH):
         with open(INDEX_PATH, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            kicks = json.load(f)
+            
+            # 파일 시스템의 '생성/수정 시간(mtime)'을 기준으로 최신순 정렬
+            for item in kicks:
+                file_path = os.path.join(CONTENT_DIR, item['file'])
+                # 파일이 존재하면 수정 시간 저장, 없으면 0 처리
+                if os.path.exists(file_path):
+                    item['mtime'] = os.path.getmtime(file_path)
+                else:
+                    item['mtime'] = 0
+            
+            # mtime(수정 시간) 기준으로 내림차순(최신순) 정렬
+            kicks.sort(key=lambda x: x['mtime'], reverse=True)
+            
+            return kicks
     return []
 
 # ==========================================
@@ -77,6 +91,9 @@ async def home(request: Request, lang: str = Query("en", enum=SUPPORTED_LANGS)):
     if not filtered_kicks and lang != 'en':
          filtered_kicks = [item for item in all_kicks if item.get("lang") == 'en']
          
+    # [신규] 필터 버튼을 위해 중복을 제거한 고유한 era(시대) 목록 추출 및 알파벳순 정렬
+    unique_eras = sorted(list(set(item.get("era", "Unknown") for item in filtered_kicks)))
+         
     # [SEO] 홈 화면용 메타데이터
     site_title = "PastHype | Where Heritage meets Hype"
     site_description = "Discover the ultimate crossover of historical icons and modern sneaker culture. Exploring the kicks of legends."
@@ -84,6 +101,7 @@ async def home(request: Request, lang: str = Query("en", enum=SUPPORTED_LANGS)):
     return templates.TemplateResponse("index.html", {
         "request": request, 
         "kicks": filtered_kicks, 
+        "eras": unique_eras, # 템플릿으로 필터 목록 전달
         "current_lang": lang,
         "page_title": site_title,
         "page_description": site_description,

@@ -415,3 +415,132 @@ footer {
 .footer-links span {
     color: #333;
 }
+
+/* =========================================
+   [NEW] Stats & Badges Container (Home)
+========================================= */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* 버튼 사이 간격 */
+    margin-top: 35px; /* 설명 텍스트와의 간격 */
+    flex-wrap: wrap; /* 모바일에서 자동 줄바꿈 */
+}
+
+.stat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #2a2e35; /* 다크 네이비/그레이 배경 */
+    border: 1px solid #3a3f47;
+    padding: 10px 20px;
+    border-radius: 50px; /* 완벽한 알약 형태 */
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    transition: all 0.2s ease;
+    cursor: default; /* 클릭 용도가 아닌 정보 표시용 */
+}
+
+/* 마우스를 올렸을 때 살짝 밝아지도록 */
+.stat-badge:hover {
+    background-color: #353a42;
+    border-color: #4a505a;
+}
+
+.stat-icon {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+}
+
+/* 숫자/포인트 부분 강조색 (주황/노랑) */
+.stat-highlight {
+    color: #f39c12; /* 스크린샷과 유사한 오렌지/머스타드 옐로우 */
+    font-weight: 800;
+}
+
+.stat-text {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* 세 번째 강조 뱃지 (보더와 배경을 다르게) */
+.stat-highlight-badge {
+    background-color: rgba(243, 156, 18, 0.15); /* 텍스트 색상과 유사한 옅은 배경 */
+    border: 1px solid #f39c12;
+}
+
+.stat-highlight-badge:hover {
+    background-color: rgba(243, 156, 18, 0.25);
+    border-color: #f1c40f;
+}
+
+/* 모바일 화면 조정 */
+@media (max-width: 600px) {
+    .stats-container {
+        gap: 10px;
+    }
+    .stat-badge {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+}
+
+/* =========================================
+   [NEW] Category Filter Chips (Home)
+========================================= */
+.category-filter-container {
+    display: flex;
+    overflow-x: auto; /* 내용이 넘치면 가로 스크롤 */
+    gap: 12px;
+    padding: 20px 40px 10px 40px; /* 좌우 여백을 갤러리 그리드와 맞춤 */
+    max-width: 1400px;
+    margin: 40px auto 0 auto;
+    
+    /* 스크롤바 숨기기 (기능은 유지) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+.category-filter-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.filter-btn {
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    padding: 10px 24px;
+    background-color: transparent;
+    color: var(--text-sub);
+    border: 1px solid #444;
+    border-radius: 30px; /* 완벽한 알약 모양 */
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-main);
+}
+
+.filter-btn:hover {
+    border-color: #888;
+    color: var(--text-main);
+}
+
+/* 활성화(선택된) 상태의 버튼 (스크린샷처럼 대비되게) */
+.filter-btn.active {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+/* 모바일 화면 조정 */
+@media (max-width: 600px) {
+    .category-filter-container {
+        padding: 20px 20px 10px 20px;
+    }
+    .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+}

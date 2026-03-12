@@ -62,7 +62,7 @@ def generate_kicks_content():
 
         print(f"\n   👟 Generating deep dive for: {name_raw} (New item {new_generated_count + 1}/{max_to_generate}) ...")
         
-        # --- AI 프롬프트 (JSON 응답 강제) ---
+        # --- AI 프롬프트 (JSON 응답 강제 및 마크다운 이스케이프 방지 구조) ---
         prompt = f"""
         Act as a professional fashion historian and sneaker columnist (like Highsnobiety or Hypebeast editor).
         
@@ -76,27 +76,23 @@ def generate_kicks_content():
         Match a specific sneaker model to this historical figure and write a VERY DETAILED, LONG-FORM article (approx. 1200-1500+ words).
         
         [Crucial Instruction]
-        **WRITE THE ENTIRE OUTPUT STRICTLY IN ENGLISH.** 
-        **YOU MUST RESPOND ONLY WITH A VALID JSON OBJECT. NO MARKDOWN FORMATTING OUTSIDE THE JSON.**
+        1. WRITE THE ENTIRE OUTPUT STRICTLY IN ENGLISH.
+        2. YOU MUST RESPOND ONLY WITH A VALID JSON OBJECT. NO MARKDOWN FORMATTING OUTSIDE THE JSON.
+        3. Do not use unescaped quotes or newlines inside the JSON strings. Use standard JSON formatting.
 
-        The JSON object must have exactly these keys:
-        "title": A catchy title for the article (e.g., "The God of War in Lost & Found: Guan Yu's Eternal Flex")
-        "sneaker_model": The full name of the matched sneaker.
-        "sneaker_brand": The brand of the sneaker.
-        "era": The era of the figure (e.g., "{row['era']}").
-        "resell_price": Estimated resell price in USD (e.g., "$500").
-        "image_prompt": A detailed prompt to generate an image of this figure wearing the sneaker.
-        "content_body": The entire article content in Markdown format. MUST include sections: ## 🕶️ The Fit Check, ## 👟 Why This Kicks?, ## 🎨 Color & Design DNA, ## 👕 OOTD Styling Guide, ## 💬 Imaginary Reactions. Use line breaks (\\n) properly inside the string.
-
-        [Example Output Structure]
+        [JSON Structure Required]
         {{
-            "title": "Title Here",
-            "sneaker_model": "Sneaker Name",
+            "title": "A catchy title (e.g., The God of War in Lost & Found: Guan Yu's Eternal Flex)",
+            "sneaker_model": "Full name of the sneaker",
             "sneaker_brand": "Brand",
-            "era": "Era",
-            "resell_price": "$100",
-            "image_prompt": "prompt here",
-            "content_body": "## 🕶️ The Fit Check\\nBody text here..."
+            "era": "{row['era']}",
+            "resell_price": "Estimated resell price (e.g., $500)",
+            "image_prompt": "A highly detailed prompt for an AI image generator",
+            "section_fit_check": "Detailed text for 'The Fit Check' section (No markdown headings inside here)",
+            "section_why_this": "Detailed text for 'Why This Kicks?' section",
+            "section_design": "Detailed text for 'Color & Design DNA' section",
+            "section_styling": "Detailed text for 'OOTD Styling Guide' section",
+            "section_reactions": "Detailed text for 'Imaginary Reactions' section"
         }}
         """
         
@@ -114,9 +110,18 @@ def generate_kicks_content():
             )
             
             try:
-                data = json.loads(response.text)
-            except json.JSONDecodeError:
-                print(f"   ❌ Error: AI did not return valid JSON for {name_raw}. Skipping.")
+                # [안전장치 추가] AI가 ```json 과 ``` 로 감싸서 보냈을 경우를 대비해 텍스트 정제
+                raw_text = response.text.strip()
+                if raw_text.startswith("```json"):
+                    raw_text = raw_text[7:]
+                if raw_text.endswith("```"):
+                    raw_text = raw_text[:-3]
+                raw_text = raw_text.strip()
+                
+                data = json.loads(raw_text)
+            except json.JSONDecodeError as e:
+                print(f"   ❌ Error: AI did not return valid JSON for {name_raw}. Error: {e}")
+                print(f"   [Raw AI Response]:\n{response.text[:200]}...") # 원인 파악을 위해 앞부분 출력
                 continue
 
             # ========================================================
@@ -129,6 +134,22 @@ def generate_kicks_content():
             safe_price = str(data.get('resell_price', 'N/A')).replace('"', "'")
             safe_prompt = str(data.get('image_prompt', '')).replace('"', "'")
             
+            # JSON에서 각각의 섹션을 가져와 마크다운 본문으로 결합합니다.
+            content_body = f"""## 🕶️ The Fit Check
+{data.get('section_fit_check', 'Content missing.')}
+
+## 👟 Why This Kicks?
+{data.get('section_why_this', 'Content missing.')}
+
+## 🎨 Color & Design DNA
+{data.get('section_design', 'Content missing.')}
+
+## 👕 OOTD Styling Guide
+{data.get('section_styling', 'Content missing.')}
+
+## 💬 Imaginary Reactions
+{data.get('section_reactions', 'Content missing.')}"""
+
             final_markdown = f"""---
 title: "{safe_title}"
 title_slug: "{file_slug}"
@@ -139,7 +160,7 @@ resell_price: "{safe_price}"
 image_prompt: "{safe_prompt}"
 ---
 
-{data.get('content_body', 'Content generation failed.')}
+{content_body}
 """
             # 파일 저장
             with open(file_path, "w", encoding="utf-8") as f:
