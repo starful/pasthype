@@ -82,6 +82,15 @@
   },
   {
     "lang": "en",
+    "slug": "headdress",
+    "file": "headdress.md",
+    "name": "The Empress of the Silk Road: How the CLOT x Nike Air Force 1 'Rose Gold Silk' Unlocks Imperial Enlightenment",
+    "sneaker": "CLOT x Nike Air Force 1 'Rose Gold Silk'",
+    "era": "Silk Road / Tang Dynasty",
+    "image": "/static/img/headdress.jpeg"
+  },
+  {
+    "lang": "en",
     "slug": "straw-hat",
     "file": "straw-hat.md",
     "name": "The Impasto Icon: Why Vincent van Gogh’s 'Street Hawker' SB Dunks Are the Ultimate Post-Impressionist Grail",
@@ -171,6 +180,15 @@
     "image": "/static/img/white-dress.jpeg"
   },
   {
+    "lang": "ja",
+    "slug": "feather-fan",
+    "file": "feather-fan_ja.md",
+    "name": "ヨウジの最高傑作を纏う蜀の賢者：諸葛亮の空霊なるフレックスと「空城の計」のエステティック",
+    "sneaker": "Y-3 Qasa High 'トリプルホワイト'",
+    "era": "Three Kingdoms Period (Taoist Robe)",
+    "image": "/static/img/feather-fan.jpeg"
+  },
+  {
     "lang": "en",
     "slug": "toga",
     "file": "toga.md",
@@ -241,6 +259,15 @@
     "sneaker": "990v3 'Grey'",
     "era": "The Era of the Great Beard (Spring and Autumn Period)",
     "image": "/static/img/robes.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "feather-fan",
+    "file": "feather-fan.md",
+    "name": "The Sage of Shu in Yohji's Masterpiece: Zhuge Liang’s Ethereal Flex and the Empty Fort Aesthetic",
+    "sneaker": "Y-3 Qasa High 'Triple White'",
+    "era": "Three Kingdoms Period (Taoist Robe)",
+    "image": "/static/img/feather-fan.jpeg"
   },
   {
     "lang": "en",
@@ -342,6 +369,15 @@
     "image": "/static/img/armor.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "feather-fan",
+    "file": "feather-fan_ko.md",
+    "name": "요지의 걸작을 신은 촉나라의 현자: 제갈량의 영롱한 플렉스와 공성계 에스테틱",
+    "sneaker": "Y-3 카사 하이 '트리플 화이트'",
+    "era": "Three Kingdoms Period (Taoist Robe)",
+    "image": "/static/img/feather-fan.jpeg"
+  },
+  {
     "lang": "en",
     "slug": "beard",
     "file": "beard.md",
@@ -406,6 +442,15 @@
   },
   {
     "lang": "ja",
+    "slug": "poetry",
+    "file": "poetry_ja.md",
+    "name": "オブシディアンの抒情詩人：なぜ「ポエトリー」の黒い鎧という野望には、ナイキ エア フォームポジット ワン 'アンスラサイト' しかあり得ないのか",
+    "sneaker": "ナイキ エア フォームポジット ワン 'アンスラサイト'",
+    "era": "Black armor",
+    "image": "/static/img/poetry.jpeg"
+  },
+  {
+    "lang": "ja",
     "slug": "beard",
     "file": "beard_ja.md",
     "name": "髭（Beard）",
@@ -423,6 +468,15 @@
     "image": "/static/img/top-hat.jpeg"
   },
   {
+    "lang": "ko",
+    "slug": "pheasant-tail-headdress",
+    "file": "pheasant-tail-headdress_ko.md",
+    "name": "레드 옥토버를 신은 난세의 귀신: 여포의 궁극적인 배신 플렉스",
+    "sneaker": "에어 이지 2 레드 옥토버",
+    "era": "Halberd / Three Kingdoms Era",
+    "image": "/static/img/pheasant-tail-headdress.jpeg"
+  },
+  {
     "lang": "ja",
     "slug": "red-face",
     "file": "red-face_ja.md",
@@ -430,6 +484,15 @@
     "sneaker": "エア ジョーダン 1 レトロ ハイ OG 'Chicago' (Lost & Found)",
     "era": "Late Eastern Han / Three Kingdoms",
     "image": "/static/img/red-face.jpeg"
+  },
+  {
+    "lang": "ja",
+    "slug": "headdress",
+    "file": "headdress_ja.md",
+    "name": "シルクロードの女帝：CLOT x Nike エア フォース 1 'ローズ ゴールド シルク'がいかにして帝国の悟りを開くか",
+    "sneaker": "CLOT x Nike エア フォース 1 'ローズ ゴールド シルク'",
+    "era": "Silk Road / Tang Dynasty",
+    "image": "/static/img/headdress.jpeg"
   },
   {
     "lang": "ko",
@@ -559,12 +622,30 @@
   },
   {
     "lang": "en",
+    "slug": "pheasant-tail-headdress",
+    "file": "pheasant-tail-headdress.md",
+    "name": "The General of Chaos in Red Octobers: Lu Bu's Ultimate Betrayal Flex",
+    "sneaker": "Air Yeezy 2 Red October",
+    "era": "Halberd / Three Kingdoms Era",
+    "image": "/static/img/pheasant-tail-headdress.jpeg"
+  },
+  {
+    "lang": "en",
     "slug": "luxury",
     "file": "luxury.md",
     "name": "The Queen of Hype: Why Marie Antoinette Would Exchange the Throne for Dior x Air Jordan 1s",
     "sneaker": "Dior x Air Jordan 1 High OG",
     "era": "Late 18th Century / The Cake Era",
     "image": "/static/img/luxury.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "headdress",
+    "file": "headdress_ko.md",
+    "name": "실크로드의 여제: CLOT x 나이키 에어포스 1 '로즈 골드 실크'가 일깨우는 황실의 깨달음",
+    "sneaker": "CLOT x 나이키 에어포스 1 '로즈 골드 실크'",
+    "era": "Silk Road / Tang Dynasty",
+    "image": "/static/img/headdress.jpeg"
   },
   {
     "lang": "en",
@@ -612,6 +693,15 @@
     "image": "/static/img/ruff-collar.jpeg"
   },
   {
+    "lang": "ja",
+    "slug": "pheasant-tail-headdress",
+    "file": "pheasant-tail-headdress_ja.md",
+    "name": "レッドオクトーバーを履いた乱世の飛将：呂布、究極の裏切りフレックス",
+    "sneaker": "Air Yeezy 2 Red October",
+    "era": "Halberd / Three Kingdoms Era",
+    "image": "/static/img/pheasant-tail-headdress.jpeg"
+  },
+  {
     "lang": "en",
     "slug": "fur-hat",
     "file": "fur-hat.md",
@@ -628,6 +718,15 @@
     "sneaker": "나이키 SB 덩크 로우 '스트리트 호커' (Street Hawker)",
     "era": "Bandaged ear (Arles/Saint-Rémy, 1889)",
     "image": "/static/img/straw-hat.jpeg"
+  },
+  {
+    "lang": "ko",
+    "slug": "poetry",
+    "file": "poetry_ko.md",
+    "name": "흑요석의 서정시인: 왜 나이키 에어 폼포짓 원 '앤트러사이트'가 포에트리의 블랙 아머 야망을 위한 유일한 선택인가",
+    "sneaker": "나이키 에어 폼포짓 원 '앤트러사이트'",
+    "era": "Black armor",
+    "image": "/static/img/poetry.jpeg"
   },
   {
     "lang": "ja",
@@ -691,6 +790,15 @@
     "sneaker": "Air Jordan 1 Retro High OG 'Chicago'",
     "era": "I Have a Dream (1963)",
     "image": "/static/img/suit.jpeg"
+  },
+  {
+    "lang": "en",
+    "slug": "poetry",
+    "file": "poetry.md",
+    "name": "The Obsidian Lyricist: Why the Nike Air Foamposite One 'Anthracite' is the Only Choice for Poetry’s Black Armor Ambition",
+    "sneaker": "Nike Air Foamposite One 'Anthracite'",
+    "era": "Black armor",
+    "image": "/static/img/poetry.jpeg"
   },
   {
     "lang": "ko",
